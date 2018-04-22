@@ -14,20 +14,53 @@ c++: 重载"="运算符
 FILE *fopen(const char *pathname, const char *mode); Thread safety
 
 ### 如何获取文件大小
+1. 使用fseek, ftell:
 ```c
-fopen (file, "r");
+char *file = "/home/feng/time.log";
+
+FILE *fp = fopen (file, "r"); //文件需要先读入内存, 所以效率低
+if (!fp) return -1;
 fseek(fp, 0L, SEEK_END);
-long size = ftell(fp);
+long size = ftell(fp); //因为返回值为long, 所以超过这个大小的文件无法用这种方法
+fclose(fp);
+printf("%s's size: %ld\n",file, size);
+```
+2. 使用stat
+```c
+ struct stat statbuf;
+ stat(file, &statbuf);
+ int size2 = statbuf.st_size;
+ printf("%s's size: %d\n",file, size2)
 ```
 
-```c
-struct stat statbuf;
-stat(file, &statbuf);
-int size2 = statbuf.st_size;
+### setuid, setgid, strick bit
+**setuid**的作用是“让执行该命令的用户以该命令拥有者的权限去执行”，比如普通用户执行passwd时会拥有root的权限，就可以修改/etc/passwd这个文件了。
+**setgid**的作用是让执行文件的用户以该文件所属组的权限去执行。
+**strick bit**是针对目录来说的，如果该目录设置了stick bit（粘滞位），则该目录下的文件除了该文件的创建者和root用户可以删除和修改，别的用户均不能动。
 ```
+chmod u+s xxx  # 设置setuid权限
+chmod g+s xxx  # 设置setgid权限
+chmod o+t xxx  # 设置stick bit权限，针对目录
+chmod 4775 xxx # 设置setuid权限
+chmod 2775 xxx # 设置setgid权限
+chmod 1775 xxx # 设置stick bit权限，针对目录
+```
+注意：有时你设置了s或t 权限，你会发现它变成了S或T，这是因为在那个位置上你没有给它x（可执行）的权限，这样的话这样的设置是不会有效的，你可以先给它赋上x的权限，然后再给s或t 的权限。
+
 ### 虚函数
-### 数据对齐，如何让他不对齐
-`#pragma pack 1`
+### 内存对齐
+**char**可起始于任意字节地址
+2字节的**short**必须从偶数字节地址开始
+4字节的**int**或**float**必须从能被4整除的地址开始
+8字节的**long**和**double**必须从能被8整除的地址开始。
+无论signed（有符号）还是unsigned（无符号）都不受影响。
+x86和ARM上的基本C类型是“自对齐（self-aligned）”的。关于指针，无论32位（4字节）还是64位（8字节）也都是自对齐的。
+通常情况下，**结构体实例**以其最宽的标量成员为基准进行对齐。
+结构体的长度是其最宽成员长度的整数倍
+
+可以通过`#pragma pack x`强迫编译器采用x的对齐规则
+
+[参考: The lost art of c structure packing](https://github.com/ludx/The-Lost-Art-of-C-Structure-Packing)
 
 ### malloc、free与new、delete区别
 | Feature |new/delete | malloc/free |
@@ -81,7 +114,10 @@ int main() {
 ```
 ### 静态变量
 
-### 僵尸进程，系统为什么不直接回收
+### 僵尸进程
+在fork()/execve（）过程中，假设子进程结束时父进程仍存在，而父进程fork()之前既没安装SIGCHLD信号处理函数调用waitpid()等待子进程结束，又没有显式忽略该信号，则子进程成为僵尸进程，无法正常结束。
+此时即使是root身份`kill -9` 也不能杀死僵尸进程。解决大批量僵尸简单有效的办法是重起。或者杀死僵尸进程的父进程（僵尸进程的父进程必然存在），僵尸进程成为”孤儿进程”，过继给1号进程init，init始终会负责清理僵尸进程。
+
 僵尸进程的避免：
  1. 父进程通过wait和waitpid等函数等待子进程结束，这会导致父进程挂起。
  2. 如果父进程很忙，那么可以用signal函数为SIGCHLD安装handler，因为子进程结束后， 父进程会收到该信号，可以在handler中调用wait回收。
@@ -92,6 +128,7 @@ int main() {
   while (waitpid (-1, &status, WNOHANG) > 0)
     ;
 ```
+
 ### 二叉数用在什么情况
 二叉树，本质上，是对链表和数组的一个折中
 在链表中，插入、删除速度很快，但查找速度较慢。
@@ -120,6 +157,39 @@ int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
 while (waitpid (-1, &status, WNOHANG) > 0)
 
 ## 系统命令
+### gdb调试
+```
+$ b main            //设置断点
+$ info b            //显示断点
+$ delte 3           //删除断点，基于断点号
+$ delete 1-3
+$ clear mythrad1    //删除断点基于文件或行号
+$ clear myThread.c :mythread1
+$ info threads      //显示线程
+$ thread 2          //切换到线程2
+$ set scheduler-locking on //只调试当前线程
+$ step              //单步调试，跟踪
+$ bt                //查看函数栈
+$ file /home/feng/a.out //载入新的symbol table
+$ attach pid        //附到一个已经在跑的进程上(需要root权限)
+$ info inferiors    //查询正在调试的进程
+```
+```
+$ set follow-fork-mode [parent|child] set detach-on-fork [on|off]  //调试多进程
+```
+|follow-fork-mode | detach-on-fork | 说明 |
+| --------------- | -------------- | ---- |
+| parent          |  on            | 只调试主进程（GDB默认）|
+| child           |  on            | 只调试子进程 |
+| parent          |  off           | 同时调试两个进程，gdb跟主进程，子进程block在fork位置 |
+| child           |  off           | 同时调试两个进程，gdb跟子进程，主进程block在fork位置 |
+
+### strace
+```
+$ strace ./a.out    //察看程序在执行什么系统调用
+$ strace -p pid     //附到一个已经在跑的进程上，实时观察
+```
+
 ### 察看进程占用IO命令
 只显示有I/O行为的进程　　　　　`iotop -oP`
 查看特定进程　　　　　　　　　　`iotop -p $PID`
@@ -139,9 +209,6 @@ while (waitpid (-1, &status, WNOHANG) > 0)
 `$ ps -T`
 `$ top -H -p <pid>`　　//让top输出某个特定进程并检查该进程内运行的线程状况
 `$ htop`
-
-### 察看程序在执行什么系统调用
-`$ strace ./a.out`
 
 ### 定时任务
 crontab
@@ -264,15 +331,45 @@ $ ping -b 192.168.255.255
 ### select最大并发量
 
 
+## 设计模式
+### 简单工厂模式
 
 ## 项目
 ### flatpak
-bubblewrap uses `PR_SET_NO_NEW_PRIVS` to turn off setuid binaries, which is the [traditional way](https://en.wikipedia.org/wiki/Chroot#Limitations) to get out of things like chroots.
+基本概念：
+**运行时(runtimes)**:
+“运行时”提供应用程序所需的基本依赖。有各种各样的“运行时”,比如“Freedesktop运行时”，“GNOME运行时”。“Freedesktop运行时”包含一系列必要的库和服务，包括D-Bus, GLib, PulseAudio, X11和Wayland等。“GNOME运行时”基于“FreeDesktop运行时”，增加了一些GNOME平台相关的库，比如GStreamer,GTK+,GVFS等。必须针对运行时构建每个应用程序，并且必须在主机系统上安装此运行时才能运行应用程序。用户可以同时安装多个不同的运行时，包括不同版本的同一个运行时。
+
+每一个运行时可以看做一个’/usr’ 文件系统，当程序运行时，它的运行时挂载在‘/usr’上。
+
+**捆绑库(Bundled libraries)**
+当一个程序需要的依赖不在运行时中，使用捆绑库来绑定这些依赖到程序上。
+
+**SDK(软件开发套件)**
+SDK也是一个“运行时”，是用于构建应用程序的特殊类型的运行时，它包含了构建和打包工具（‘devel’ parts），如头文件，编译器和调试器。通常，SDK与“运行时”配对，由应用程序使用。
+
+**扩展(Extensions)**
+一个扩展是对于运行时或程序的可选插件，一般用于把translations和debug信息从运行时分离出来，比如, org.freedesktop.Platform.Locale 可以追加到org.freedesktop.Platform运行时上用来添加翻译。
+
+**沙箱（Sandbox）**
+使用Flatpak，每个应用程序都是在孤立的环境中构建和运行的。默认情况下，应用程序只能“查看”自身及其“运行时”,访问用户文件，网络，graphics sockets，总线和设备上的子系统必须明确授予权限，访问其他内容（如其他进程）是不允许的。（可以通过Portals机制在沙箱内访问外面系统，比如打印，截图等）
+
+Flatpak主要使用了如下技术：
+1. bubblewrap：依赖它作为沙箱的底层实现,限制了应用程序访问操作系统或用户数据的能力，并且提供了非特权用户使用容器的能力。
+2. Systemd：将各个subsystem和cgroup树关联并挂载好，为沙箱创建 cgroups。
+3. D-Bus, 为应用程序提供高层APIs。
+4. 使用Open Container Initiative的OCI格式作为单文件的传输格式，方便传输。
+5. 使用OSTree系统用于版本化和分发文件系统树。
+6. 使用Appstream元数据，使得Flatpak应用程序在软件中心可以完美呈现出来。
+
+附：[没想到你是这样的flatpak](http://www.ubuntukylin.com/news/shownews.php?lang=cn&id=664)
+
+**bubblewrap** uses `PR_SET_NO_NEW_PRIVS` to turn off setuid binaries, which is the [traditional way](https://en.wikipedia.org/wiki/Chroot#Limitations) to get out of things like chroots.
 ```
 /* Never gain any more privs during exec */
   if (prctl (PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0) < 0)
 ```
-bubblewrap works by creating a new, completely empty, mount namespace where the root is on a tmpfs that is invisible from the host, and will be automatically cleaned up when the last process exits.
+bubblewrap works by **creating a new, completely empty, mount namespace** where the root is on a tmpfs that is invisible from the host, and will be automatically cleaned up when the last process exits.
 bubblewrap always creates a new mount namespace, and the user can specify exactly what parts of the filesystem should be visible in the sandbox.
 Any such directories you specify mounted `nodev` by default, and can be made readonly.
 
@@ -313,3 +410,40 @@ flags: 指定一个或者多个namespace类型,这样当前进程就退出了当
 1. 通过mount --bind命令。例如mount --bind /proc/1000/ns/ipc /other/file，就算属于这个ipc namespace的所有进程都退出了，只要/other/file还在，这个ipc namespace就一直存在，其他进程就可以利用/other/file，通过setns函数加入到这个namespace
 2. 在其他namespace的进程中打开/proc/1000/ns/ipc文件，并一直持有这个文件描述符不关闭，以后就可以用setns函数加入这个namespace。
 
+### unity7
+Compiz窗口管理器的一个插件，使用nux(opengl)图形库。部分采用cario直接绘制。
+添加动态调整整体布局以及kylin style的锁屏和dash，通过监控gsettings设置，条件判断+工厂模式。
+
+### unity8
+The Unity 8 Desktop Preview is the new Unity 8 desktop shell running on the Mir display technology.
+unity8(c++ + qml) + mir
+If you want to run X11 applications that do not have native Mir support in the toolkit they use then the answer is an X11 server that runs on Mir. That could be either Xmir or Xwayland.
+
+### ukui
+会话管理器, 按照X 会话管理协议 (XSMP)
+会话管理协议的主要部分是：
+1. 会话管理器为每个客户端选择一个唯一的标识符
+2. 会话管理器需要客户端保存他们的状态
+3. 客户端指定它该如何重启以便恢复状态（例如，使用命令行来启动程序）
+
+### 窗口管理器
+使用窗口管理器时，Xserver 并不直接与其它 Xclient 通信，而是通过WM中转，当一些消息被定义为WM指令时，它们会被拦截。例如 Alt+F4 关闭窗口、拖动标题栏……
+
+**系统启动过程**：
+内核加载 –> init程序运行 –> systemd -> 显示管理器运行(众多服务之一) –> X Server 运行 –> 显示管理器连接到 X Server，显示登录界面 –> 用户登录后，登录界面关闭，加载桌面环境
+
+从上面的流程可以看出，显示管理器是 X Server 的父进程，它负责启动 X Server，当 X Server 启动后，它又变成了 X Server 的一个 Client 程序，连接到 X Server 显示欢迎界面和登录界面，最后，显示管理器又是所有桌面环境的父进程，它负责启动桌面环境需要的其它 Client 程序。
+
+lightdm 在启动 X Server 的时候，给 X Server 加上了 -nolisten tcp 参数，所以远程计算机就没有办法连接到 Ubuntu 的桌面了。
+
+## shell脚本
+```
+$# 是传给脚本的参数个数
+$0 是脚本本身的名字
+$1 是传递给该shell脚本的第一个参数
+$2 是传递给该shell脚本的第二个参数
+$@ 是传给脚本的所有参数的列表
+$* 是以一个单字符串显示所有向脚本传递的参数，与位置变量不同，参数可超过9个
+$$ 是脚本运行的当前进程ID号
+$? 是显示最后命令的退出状态，0表示没有错误，其他表示有错误
+```
