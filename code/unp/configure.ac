@@ -14,4 +14,5 @@ AC_SUBST(LIBUNP_CFLAGS)
 AC_OUTPUT(
 Makefile
 lib/Makefile
-intro/Makefile)
+intro/Makefile
+tcpcliserv/Makefile)

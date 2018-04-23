@@ -1,6 +1,7 @@
 SUBDIRS = \
     lib \
 	intro \
+	tcpcliserv \
 	$(NULL)
 
 EXTRA_DIST = \

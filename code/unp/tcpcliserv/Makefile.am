@@ -1,5 +1,6 @@
 bin_PROGRAMS = \
     tcpserv01 \
+	tcpcli01 \
 	$(NULL)
 
 AM_CPPFLAGS = \
@@ -13,3 +14,7 @@ LDADD = \
 tcpserv01_SOURCES = \
     tcpserv01.c \
 	$(NULL)
+
+tcpcli01_SOURCES = \
+    tcpli01 \
+    $(NULL)

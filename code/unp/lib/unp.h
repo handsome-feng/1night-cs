@@ -37,9 +37,9 @@ void  Write(int, void *, size_t);
 int   Accept(int, SA *, socklen_t *);
 void  Bind(int, const SA *, socklen_t);
 void  Listen(int, int);
+void  Writen(int, void *, size_t);
 int  Socket(int, int, int);
 
 /* prototypes for our own library wrapper functions */
 const char   *Inet_ntop(int, const void *, char *, size_t);
-void  str_echo(int);
 #endif /* __unp_h */
