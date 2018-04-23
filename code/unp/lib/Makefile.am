@@ -11,7 +11,9 @@ UNP_FILES =    \
 	unp.h       \
 	wraplib.c   \
 	wrapsock.c  \
+	wrapstdio.c \
 	wrapunix.c  \
+	writen.c    \
 	$(NULL)
 
 libunp_la_SOURCES =    \

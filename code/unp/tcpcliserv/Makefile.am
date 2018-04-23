@@ -5,6 +5,7 @@ bin_PROGRAMS = \
 
 AM_CPPFLAGS = \
     -I$(top_builddir)/lib \
+	-g -O0 \
 	$(NULL)
 
 LDADD = \
@@ -16,5 +17,5 @@ tcpserv01_SOURCES = \
 	$(NULL)
 
 tcpcli01_SOURCES = \
-    tcpli01 \
+    tcpcli01.c\
     $(NULL)

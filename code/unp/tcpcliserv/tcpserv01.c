@@ -40,9 +40,13 @@ main(int argc, char **argv)
         connfd = Accept(listenfd, (SA *) &cliaddr, &clilen);
         if ( (childpid = Fork()) == 0) {           /* child process */
             Close(listenfd);       /* close listening socket */
+            printf("childddddd\n");
             str_echo(connfd);      /* process the request */
             exit(0);
         }
+        printf("parenttttttttttt\n");
         Close(connfd);             /* parent closes connected socket */
     }
+
+    return 0;
 }

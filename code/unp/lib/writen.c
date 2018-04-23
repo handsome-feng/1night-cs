@@ -1,7 +1,7 @@
 #include "unp.h"
 
 ssize_t
-writen(int fd, const void *vpr, ssize_t n)
+writen(int fd, const void *vptr, ssize_t n)
 {
     size_t nleft;
     ssize_t nwritten;
@@ -16,5 +16,15 @@ writen(int fd, const void *vpr, ssize_t n)
             else
                 return -1;
         }
+
+        nleft -= nwritten;
+        ptr   += nwritten;
     }
+}
+
+void
+Writen(int fd, void *ptr, size_t nbytes)
+{
+    if (writen(fd, ptr, nbytes) != nbytes)
+        err_sys("writen error");
 }
