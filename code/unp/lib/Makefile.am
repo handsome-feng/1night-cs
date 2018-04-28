@@ -8,6 +8,8 @@ UNP_FILES =    \
 	readline.c  \
 	readn.c     \
 	sock_ntop.c  \
+	str_echo.c  \
+	signal.c    \
 	unp.h       \
 	wraplib.c   \
 	wrapsock.c  \

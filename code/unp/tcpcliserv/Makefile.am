@@ -1,6 +1,8 @@
 bin_PROGRAMS = \
     tcpserv01 \
 	tcpcli01 \
+	tcpserv03 \
+	tcpcli04 \
 	$(NULL)
 
 AM_CPPFLAGS = \
@@ -18,4 +20,13 @@ tcpserv01_SOURCES = \
 
 tcpcli01_SOURCES = \
     tcpcli01.c\
+    $(NULL)
+
+tcpserv03_SOURCES = \
+    tcpserv03.c\
+	sigchldwait.c \
+    $(NULL)
+
+tcpcli04_SOURCES = \
+    tcpcli04.c\
     $(NULL)

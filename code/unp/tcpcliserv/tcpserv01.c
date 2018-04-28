@@ -1,21 +1,5 @@
 #include "unp.h"
 
-void
-str_echo(int sockfd)
-{
-    ssize_t n;
-    char    buf[MAXLINE];
-
-again:
-    while ( (n = read(sockfd, buf, MAXLINE)) > 0)
-        Writen(sockfd, buf, n);
-
-    if (n < 0 && errno == EINTR)
-        goto again;
-    else if (n < 0)
-        err_sys("str_echo: read error");
-}
-
 int
 main(int argc, char **argv)
 {
@@ -40,11 +24,9 @@ main(int argc, char **argv)
         connfd = Accept(listenfd, (SA *) &cliaddr, &clilen);
         if ( (childpid = Fork()) == 0) {           /* child process */
             Close(listenfd);       /* close listening socket */
-            printf("childddddd\n");
             str_echo(connfd);      /* process the request */
             exit(0);
         }
-        printf("parenttttttttttt\n");
         Close(connfd);             /* parent closes connected socket */
     }
 

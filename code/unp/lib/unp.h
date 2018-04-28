@@ -3,6 +3,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 #include <arpa/inet.h>
 
 #include <stdlib.h>
@@ -10,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <strings.h>
+#include <signal.h>
 
 #include <sys/errno.h>
 
@@ -20,6 +22,8 @@
 #define LISTENQ     1024
 
 #define SERV_PORT   9877
+
+typedef void Sigfunc(int);    /* for signal handlers */
 
 void err_dump(const char *, ...);
 void err_msg(const char *, ...);
@@ -49,8 +53,10 @@ void  Listen(int, int);
 ssize_t Readline(int, void *, size_t);
 void  Writen(int, void *, size_t);
 int  Socket(int, int, int);
+Sigfunc *Signal(int, Sigfunc *);
 
 /* prototypes for our own library wrapper functions */
 void          Inet_pton(int, const char *, void *);
 const char   *Inet_ntop(int, const void *, char *, size_t);
+void          str_echo(int);
 #endif /* __unp_h */
