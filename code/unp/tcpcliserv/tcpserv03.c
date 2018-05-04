@@ -1,5 +1,4 @@
 #include	"unp.h"
-#include    "sigchld.h"
 
 int
 main(int argc, char **argv)

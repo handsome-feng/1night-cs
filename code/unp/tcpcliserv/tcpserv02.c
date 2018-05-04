@@ -24,7 +24,7 @@ main(int argc, char **argv)
 
     for ( ; ; ) {
         clilen = sizeof(cliaddr);
-        connfd = Accept(listendf, (SA *) &cliaddr, &clilen);
+        connfd = Accept(listenfd, (SA *) &cliaddr, &clilen);
 
         if ( (childpid = Fork()) == 0) {
             Close(listenfd);

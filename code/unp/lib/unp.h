@@ -36,6 +36,7 @@ void err_sys(const char *, ...);
 void  Close(int);
 pid_t Fork(void);
 void  Write(int, void *, size_t);
+ssize_t Readn(int, void *, size_t);
 
 /* prototypes for our stdio wrapper functions */
 void  Fclose(FILE *);
@@ -59,4 +60,6 @@ Sigfunc *Signal(int, Sigfunc *);
 void          Inet_pton(int, const char *, void *);
 const char   *Inet_ntop(int, const void *, char *, size_t);
 void          str_echo(int);
+void          str_cli(FILE *, int);
+void          sig_chld(int);
 #endif /* __unp_h */

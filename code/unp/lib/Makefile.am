@@ -9,7 +9,9 @@ UNP_FILES =    \
 	readn.c     \
 	sock_ntop.c  \
 	str_echo.c  \
+	str_cli.c   \
 	signal.c    \
+	sigchldwait.c \
 	unp.h       \
 	wraplib.c   \
 	wrapsock.c  \
