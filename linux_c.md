@@ -89,7 +89,7 @@ x86和ARM上的基本C类型是“自对齐（self-aligned）”的。关于指�
         gettimeofday(&starttime,0);
 　　    //do some process here
 　  　  gettimeofday(&endtime,0);
-　  　
+
 ### unsigned int a,b; double c=a*b 会不会溢出
 
 ### 为什么析构函数要用虚析构函数
@@ -565,3 +565,8 @@ bash -n scriptname
 bash -v scriptname
 bash -x scriptname
 
+## git管理
+git revert $id
+git reset
+git cherry-pick
+git push origin-debain debian:master
