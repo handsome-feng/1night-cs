@@ -560,4 +560,13 @@ $* 是以一个单字符串显示所有向脚本传递的参数，与位置变�
 $$ 是脚本运行的当前进程ID号
 $? 是显示最后命令的退出状态，0表示没有错误，其他表示有错误
 ```
+### 调试
+bash -n scriptname
+bash -v scriptname
+bash -x scriptname
 
+## git管理
+git revert $id
+git reset
+git cherry-pick
+git push origin-debain debian:master
