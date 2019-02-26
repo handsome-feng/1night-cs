@@ -13,6 +13,11 @@ git submodule update
 git revert <commit-id>
 
 
+git reset
+git cherry-pick
+git push origin-debain debian:master
+
+
 
 ### bzr to git
 
