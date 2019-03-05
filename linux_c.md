@@ -1,9 +1,21 @@
-# Linux C 进阶之路
+Linux C 进阶之路
 
 标签（空格分隔）： linux
 
 ---
+- [ ] 性能调优
+- [ ] 熟练掌握STL，boost
+- [ ] 设计模式
+- [ ] MySQL数据库,SQL 调优
+- [ ] 高并发分布式系统
+- [ ] 熟悉分布式技术，如RPC、负载均衡、高可用、消息系统、缓存技术等
+- [ ] 熟悉Linux系统用户层程序编写(共享内存、posix线程、信号量)
+- [ ] 精通Linux系统用户层程序调试技术(gdb,strace,mtrace,ltrace)
+- [ ] 熟悉socket编程，了解TCP/IP协议族；
+- [ ] openstack,kvm或docker等虚拟化技术/项目开发经验的同学优先
+
 ## linux c/c++ 细节
+
 ### 浮点数如何比较
 fabs(a-b)<=1E-6
 ### 结构体如何比较
@@ -12,6 +24,12 @@ c++: 重载"="运算符
 
 ### fopen参数
 FILE *fopen(const char *pathname, const char *mode); Thread safety
+
+### C++面向对象
+
+#### 友元类：
+
+实际上具体大概有下面两种情况需要使用友元函数：（1）运算符重载的某些场合需要使用友元。（2）两个类要共享数据的时候。
 
 ### 如何获取文件大小
 1. 使用fseek, ftell:

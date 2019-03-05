@@ -92,4 +92,53 @@ public void push(int node) {
 
 层序遍历直接想到的应该是基于队列实现。从上到下打印二叉树的规律：每一次打印一个结点的时候，如果该结点有子结点，则把该结点的子结点放到一个队列的末尾。接下来到队列头部取出最早进入队列的结点，重复前面的打印操作，直到队列中所有的结点都被打印出来为止。
 
-## 
+## 排序算法
+
+### 选择排序
+
+```c++
+template<typename T>
+void selectionSort (T arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++)
+            if (arr[j] < arr[minIndex])
+                minIndex = j;
+
+        swap (arr[i], arr[minIndex]);
+    }
+}
+```
+
+### 插入排序
+
+```c++
+template<typename T>
+void insertionSort (T arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        // 寻找arr[i]合适的插入位置
+        for (int j = i; j > 0 && arr[j] < arr[j-1]; j--) {
+            swap (arr[j], arr[j-1]);  //一次交换=三次赋值
+        }
+    }
+}
+```
+
+```c++
+template<typename T>
+void insertionSort2 (T arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        T e = arr[i];
+        int j; //保存元素e应该插入的位置
+        for (j = i; j > 0 && arr[j-1] > e; j--) {
+            arr[j] = arr[j-1]; //向后移动
+        }
+        arr[j] = e;
+    }
+}
+```
+
+对于近乎有序的数组，效率极高，近似于O(n)。
+
+### 冒泡排序
+
