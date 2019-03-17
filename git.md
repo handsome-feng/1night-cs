@@ -8,7 +8,7 @@ git push origin-gitlab debian:master
 git cherry-pick <commit-id>
 git cherry-pick <start-commit-id>..<end-commit-id>
 
-git submodule update
+git submodule update --init
 
 git revert <commit-id>
 

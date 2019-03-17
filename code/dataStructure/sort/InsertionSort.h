@@ -1,7 +1,5 @@
-#include <iostream>
-#include "SortTestHelper.h"
-
-using namespace std;
+#ifndef SORT_INSERTIONSORT_H
+#define SORT_INSERTIONSORT_H
 
 template<typename T>
 void insertionSort (T arr[], int n) {
@@ -24,3 +22,5 @@ void insertionSort2 (T arr[], int n) {
         arr[j] = e;
     }
 }
+
+#endif // SORT_INSERTIONSORT_H
