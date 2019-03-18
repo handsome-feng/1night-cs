@@ -12,10 +12,19 @@ git submodule update --init
 
 git revert <commit-id>
 
-
 git reset
 git cherry-pick
 git push origin-debain debian:master
+
+
+
+git branch -d <branchName>
+
+#### 合并两个分支
+
+git remote add new-origin git@github.com:handsome-feng/new.git
+
+git merge new-origin/master --allow-unreleated-histories
 
 
 

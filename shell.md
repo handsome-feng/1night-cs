@@ -36,3 +36,7 @@ echo "0"${k}
 删除每行开头的所有空格
 
 sed 's/^[ ]//g' test 
+
+
+
+`find . -name "\*.c" | xargs grep -H "hello"`
