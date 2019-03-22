@@ -13,12 +13,26 @@ git submodule update --init
 git revert <commit-id>
 
 git reset
-git cherry-pick
+
+
+
+将本地debian分支推送到远程origin-debian的master分支：
+
 git push origin-debain debian:master
 
 
 
+删除本地分支：
+
 git branch -d <branchName>
+
+删除远程分支：
+
+git push origin --delete <branchName>
+
+#### 合并某个分支的特定文件：
+
+`git checkout [branch]  [file name]`
 
 #### 合并两个分支
 
