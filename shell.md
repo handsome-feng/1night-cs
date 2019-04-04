@@ -40,3 +40,7 @@ sed 's/^[ ]//g' test
 
 
 `find . -name "\*.c" | xargs grep -H "hello"`
+
+
+
+watch -d -n 1 tree -L 1 /usr/share/applications

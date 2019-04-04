@@ -32,6 +32,12 @@ $ set follow-fork-mode [parent|child] set detach-on-fork [on|off]  //调试多�
 | parent           | off            | 同时调试两个进程，gdb跟主进程，子进程block在fork位置 |
 | child            | off            | 同时调试两个进程，gdb跟子进程，主进程block在fork位置 |
 
+set target-async on
+
+set pagination off
+
+set non-stop on
+
 ### strace
 
 ```
