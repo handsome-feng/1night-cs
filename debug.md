@@ -45,6 +45,10 @@ $ strace ./a.out    //察看程序在执行什么系统调用
 $ strace -p pid     //附到一个已经在跑的进程上，实时观察
 ```
 
+### mtrace
+
+### valgrind
+
 ### 察看进程占用IO命令
 
 只显示有I/O行为的进程　　　　　`iotop -oP`
