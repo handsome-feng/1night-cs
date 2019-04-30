@@ -25,7 +25,9 @@ bash -x scriptname
 for k in $(ls); do mv ${k} `echo ${k} | sed 's/aaa//g'`; done
 ```
 
+批量替换：
 
+sed -i "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
 
 连接字符串：
 
