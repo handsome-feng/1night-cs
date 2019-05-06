@@ -32,12 +32,22 @@ $ set follow-fork-mode [parent|child] set detach-on-fork [on|off]  //调试多�
 | parent           | off            | 同时调试两个进程，gdb跟主进程，子进程block在fork位置 |
 | child            | off            | 同时调试两个进程，gdb跟子进程，主进程block在fork位置 |
 
+set target-async on
+
+set pagination off
+
+set non-stop on
+
 ### strace
 
 ```
 $ strace ./a.out    //察看程序在执行什么系统调用
 $ strace -p pid     //附到一个已经在跑的进程上，实时观察
 ```
+
+### mtrace
+
+### valgrind
 
 ### 察看进程占用IO命令
 

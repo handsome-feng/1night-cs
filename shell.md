@@ -25,7 +25,9 @@ bash -x scriptname
 for k in $(ls); do mv ${k} `echo ${k} | sed 's/aaa//g'`; done
 ```
 
+批量替换：
 
+sed -i "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
 
 连接字符串：
 
@@ -36,3 +38,11 @@ echo "0"${k}
 删除每行开头的所有空格
 
 sed 's/^[ ]//g' test 
+
+
+
+`find . -name "\*.c" | xargs grep -H "hello"`
+
+
+
+watch -d -n 1 tree -L 1 /usr/share/applications

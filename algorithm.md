@@ -142,3 +142,7 @@ void insertionSort2 (T arr[], int n) {
 
 ### 冒泡排序
 
+### 合并排序
+
+### 快速排序
+
