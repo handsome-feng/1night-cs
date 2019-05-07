@@ -160,3 +160,9 @@ These two steps (comparing and removing initial non-digit strings and initial di
 Note that the purpose of epochs is to allow us to leave behind mistakes in version numbering, and to cope with situations where the version numbering scheme changes. It is not intended to cope with version numbers containing strings of letters which the package management system cannot interpret (such as ALPHA or pre-), or with silly orderings.
 
 ubuntu will indicate that the package has been built specifically for Ubuntu. The alpha and build strings don't seem to have any particular meaning, but dfsg refers to a package that has been modified for compliance with the Debian Free Software Guidelines.
+
+
+
+### 安装命令提示器
+
+sudo apt install command-not-found
