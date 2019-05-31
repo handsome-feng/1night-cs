@@ -65,11 +65,6 @@ Debian new and byhand pakcages: https://ftp-master.debian.org/new.html
 
 ### 常用流程
 
-#### SRU:
-
-https://wiki.ubuntu.com/StableReleaseUpdates
-http://people.canonical.com/~ubuntu-archive/pending-sru.html
-
 #### SponsorshipProcess
 
 https://wiki.ubuntu.com/SponsorshipProcess
