@@ -40,7 +40,9 @@ git remote add new-origin git@github.com:handsome-feng/new.git
 
 git merge new-origin/master --allow-unreleated-histories
 
+#### 删除某个commit
 
+git rebase -i previous_commit
 
 ### bzr to git
 
