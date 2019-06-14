@@ -7,6 +7,8 @@ http://people.canonical.com/~ubuntu-archive/pending-sru.html
 
 debdiff:
 
+* quilt
+
 $ apt-get source kylin-nm
 
 $ pull-lp-source <package_name> trusty
@@ -37,3 +39,14 @@ $ update-maintainer
 $ debuild -S
 
 $ debdiff kylin-nm_1.0.0-1.dsc kylin-nm_1.0.0-1ubuntu0.1.dsc > kylin-nm_1.0.0-1ubuntu0.1.debdiff
+
+
+
+* native
+  $ pull-lp-source kylin-nm trusty
+
+  edit it
+
+  $ debuild -sa -S
+
+  $ defdiff kylin-nm_1.0.0-1.dsc kylin-nm_1.0.0-1ubuntu0.1.dsc > kylin-nm_1.0.0-1ubuntu0.1.debdiff
