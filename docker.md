@@ -19,7 +19,7 @@ sudo docker pull docker.io/readlnh/ubuntukylin-vnc-docker:19.04-4.18edition
 for i in `seq 1 50`
 do
     ((var=5000+i))
-    docker run  --name kylin-1904-$i --cap-add ALL --privileged=true -p $var:5900 -td readlnh/ubuntukylin-vnc-docker:19.04-4.18edition /sbin/init
+    docker run  --name kylin-1904-$i -m 2G --cap-add ALL --privileged=true -p $var:5900 -td readlnh/ubuntukylin-vnc-docker:19.04-4.18edition /sbin/init
     echo "docker  run kylin-1904-$i"
 done
 ```
@@ -45,6 +45,26 @@ sudo docker exec -it <id> /bin/bash
 临时退出一个正在交互的容器终端：
 
 ctrl-p ctrl-q
+
+
+
+批量删除容器
+
+```shell
+sudo docker rm `docker ps -a -q | grep kylin | awk '{print $3}'`
+```
+
+删除镜像
+
+sudo docker rmi `docker images -q -a`
+
+导入导出镜像：
+
+sudo docker images
+
+sudo docker save <id> /path/to/kylin-1904.tar
+
+sudo docker load /path/to/kylin-1904.tar
 
 
 
