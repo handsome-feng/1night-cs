@@ -108,3 +108,16 @@ watch -d -n 1 tree -L 1 /usr/share/applications
 \>/dev/null 2>&1 VS >/dev/null 2>/dev/null
 
 采用后面这种写法，标准输出和错误输出会抢占往/dev/null文件的管道，所以可能会导致输出内容的时候出现缺失、覆盖等情况,可能出现乱码，也有可能出现只有error信息或者只有正常信息的情况。不管怎么说，采用这种写法，最后的情况是无法预估的。而且，由于out文件被打开了两次，两个文件描述符会抢占性的往文件中输出内容，所以整体IO效率不如`>/dev/null 2>&1`来得高。
+
+### getopts
+
+usage: getopts option_string variable
+
+option_string后面跟冒号，代表选项必须带参数
+
+option_string前面带冒号，getopts会区分invalid option和miss option argument错误。
+
+invalid option时，varname被设为?,$OPTAGR是出问题的option;
+
+miss option argument时，varname会被设成:,$OPTARG是出问题的option;
+
