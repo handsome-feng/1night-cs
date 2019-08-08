@@ -60,3 +60,16 @@ rm -rf .bzr/                                    # Remove the bzr data
 ### Removing files from Git history
 
 `$ java -jar bfg.jar --delete-folders .git --delete-files .git --no-blob-protection my-repo.git`
+
+## git使用代理
+
+```shell
+# 设置代理
+git config --global http.proxy socks5://127.0.0.1:1080
+git config --global https.proxy socks5://127.0.0.1:1080
+
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+

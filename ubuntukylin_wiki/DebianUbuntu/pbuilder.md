@@ -4,10 +4,10 @@ You must use sudo for pbuilder. Hence you must make an entry in the sudoers file
 sudo visudo
 ```
 
-and add the following entry: 
+and add the following entry (Not sure, encounter error in debian after add this): 
 
 ```
-user_name ALL=(ALL) NOPASSWD: /usr/sbin/pbuilder
+user_name ALL=(ALL) NOPASSWD:/usr/sbin/pbuilder
 ```
 
 Now you need to set up a base tarball that will contain your chroot environment: 
@@ -136,7 +136,15 @@ install_packages() {
 install_packages lintian
 echo "+++ lintian output +++"
 su -c "lintian -i -I --show-overrides /tmp/buildd/*.changes" - pbuilder
-# use this version if you don't want lintian to fail the build
+# use this version if you don't want lintian to fail the buildsudo
 #su -c "lintian -i -I --show-overrides /tmp/buildd/*.changes; :" - pbuilder
 echo "+++ end of lintian output +++"
 ```
+
+
+
+### Reference
+
+https://wiki.ubuntu.com/PbuilderHowto
+
+https://wiki.debian.org/PbuilderTricks
