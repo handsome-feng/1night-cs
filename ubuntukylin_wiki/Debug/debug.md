@@ -51,7 +51,7 @@ $ strace -p pid     //附到一个已经在跑的进程上，实时观察
 
 查看文件被哪个i进程占用
 
-`$ fuser path/to/file`
+`$ sudo fuser -v path/to/file`
 
 ### 察看多线程所有线程ID
 

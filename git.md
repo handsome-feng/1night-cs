@@ -30,6 +30,10 @@ git branch -d <branchName>
 
 git push origin --delete <branchName>
 
+切换分支：
+
+git checkout -b debian remotes/origin/debian
+
 #### 合并某个分支的特定文件：
 
 `git checkout [branch]  [file name]`

@@ -73,3 +73,40 @@ Exec=/path/to/scorpio/test
   `qdbusxml2cpp com.scorpio.test.xml -i test.h -a valueAdaptor`
   解析com.scorpio.test.xml文件，生成Proxy类ComScorpioTestValueInterface，文件名称为testInterface.h、testInterface.cpp命令行如下：
   `qdbusxml2cpp com.scorpio.test.xml -p testInterface`
+
+
+
+### dbus-daemon
+
+https://dbus.freedesktop.org/doc/dbus-daemon.1.html
+
+**D-Bus** is first a library that provides one-to-one communication between any two applications; 
+
+**dbus-daemon** is an application that uses this library to implement a message bus daemon. Multiple programs connect to the message bus daemon and can exchange messages with one another.
+
+There are two standard message bus instances: 
+
+ systemwide message bus (installed on many systems as the "messagebus" init service) 
+
+per-user-login-session message bus (started each time a user logs in).
+
+SIGHUP will cause the D-Bus daemon to PARTIALLY reload its configuration file and to flush its user/group information caches. Some configuration changes would require kicking all apps off the bus; so they will only take effect if you restart the daemon. Policy changes should take effect with SIGHUP.
+
+### configuration file
+
+The standard systemwide and per-session message bus setups are configured in the files "/usr/share/dbus-1/system.conf" and "/usr/share/dbus-1/session.conf". These files normally <include> a system-local.conf or session-local.conf in /etc/dbus-1; you can put local overrides in those files to avoid modifying the primary configuration files.
+
+The standard system bus normally reads additional XML files from /usr/share/dbus-1/system.d. Third-party packages should install the default policies necessary for correct operation into that directory, which has been supported since dbus 1.10 (released in 2015).
+
+The standard system bus normally also reads XML files from /etc/dbus-1/system.d, which should be used by system administrators if they wish to override default policies.
+
+Third-party packages would historically install XML files into /etc/dbus-1/system.d, but this practice is now considered to be deprecated: that directory should be treated as reserved for the system administrator.
+
+* <policy>
+
+The <policy> element defines a security policy to be applied to a particular set of connections to the bus. A policy is made up of <allow> and <deny> elements. Policies are normally used with the systemwide bus; they are analogous to a firewall in that they allow expected traffic and prevent unexpected traffic.
+
+In general, it is best to keep system services as small, targeted programs which run in their own process and provide a single bus name. Then, all that is needed is an <allow> rule for the "own" permission to let the process claim the bus name, and a "send_destination" rule to allow traffic from some or all uids to your service.
+
+Rules with one or more of the `send_`* family of attributes are checked in order when a connection attempts to send a message. The last rule that matches the message determines whether it may be sent. The well-known session bus normally allows sending any message. The well-known system bus normally allows sending any signal, selected method calls to the **dbus-daemon**, and exactly one reply to each previously-sent method call (either success or an error). Either of these can be overridden by configuration; on the system bus, services that will receive method calls must install configuration that allows them to do so, usually via rules of the form `<policy context="default"><allow send_destination="…"/><policy>`.
+
