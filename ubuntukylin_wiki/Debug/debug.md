@@ -11,6 +11,38 @@ $ strace -p pid     //附到一个已经在跑的进程上，实时观察
 
 ### valgrind
 
+### Backtrace
+
+Generation
+
+1. Please ensure you have packages with debug symbols installed. You can do this by following the instructions at DebuggingProgramCrash.
+
+2. Make sure the GNU Debugger is installed.
+
+3. sudo apt-get install gdb 
+   Start the program under control of gdb via a terminal (some programs run as root, so one would use sudo gdb instead of just gdb below):
+
+```
+gdb <program> 2>&1 | tee ~/gdb-<program>.txt
+(gdb) handle SIG33 pass nostop noprint
+(gdb) set pagination 0
+(gdb) run <arguments, if any>
+```
+
+4. The program will start. Perform any actions necessary to reproduce the crash. If the program hangs but doesn't crash you can press ctrl+c in gdb while the program is frozen and then continue with the next step.
+   Retrieve a backtrace:
+
+```
+(gdb) backtrace full
+(gdb) info registers
+(gdb) x/16i $pc
+(gdb) thread apply all backtrace
+(gdb) quit 
+```
+
+
+Attach the complete output from GDB, contained in gdb-<program>.txt, in your bug report. You will find the file in your home directory /home/<username>/.
+
 ### 察看进程占用IO命令
 
 只显示有I/O行为的进程
@@ -105,3 +137,4 @@ Print only the name of PID 42:
 ```
 ps -q 42 -o comm=
 ```
+

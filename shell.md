@@ -121,3 +121,17 @@ invalid option时，varname被设为?,$OPTAGR是出问题的option;
 
 miss option argument时，varname会被设成:,$OPTARG是出问题的option;
 
+
+
+### eval
+
+```shell
+$ foo=10 x=foo
+$ y='$'$x
+$ echo $y
+$foo
+$ eval y='$'$x
+$ echo $y
+10
+```
+
