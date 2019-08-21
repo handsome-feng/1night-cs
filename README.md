@@ -41,13 +41,12 @@
 ### 常用命令
 
   1. 包管理
-  2. 系统监控
-
-    * 网络
-      1. ifconfig
-      2. netstat
-      3. tcpdump
-      4. wireshark
+    2. 系统监控
+       * 网络
+         * ifconfig
+         * netstat
+         * tcpdump
+         * wireshark
 
 ### 跨版本
 

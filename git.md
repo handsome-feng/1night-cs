@@ -1,38 +1,35 @@
 ### Git 常用命令
+```shell
 git checkout -b <branch-name>
-
 git remote -v
 git remote add origin-gitlab git@salsa.debian.org:handsome_feng-guest/ukui-session-manager.git
 git push origin-gitlab debian:master
-
 git cherry-pick <commit-id>
 git cherry-pick <start-commit-id>..<end-commit-id>
-
 git submodule update --init
-
 git revert <commit-id>
-
 git reset
+```
 
 
 
 将本地debian分支推送到远程origin-debian的master分支：
 
-git push origin-debain debian:master
+`git push origin-debain debian:master`
 
 
 
 删除本地分支：
 
-git branch -d <branchName>
+`git branch -d <branchName>`
 
 删除远程分支：
 
-git push origin --delete <branchName>
+`git push origin --delete <branchName>`
 
 切换分支：
 
-git checkout -b debian remotes/origin/debian
+`git checkout -b debian remotes/origin/debian`
 
 #### 合并某个分支的特定文件：
 
@@ -40,13 +37,13 @@ git checkout -b debian remotes/origin/debian
 
 #### 合并两个分支
 
-git remote add new-origin git@github.com:handsome-feng/new.git
+`git remote add new-origin git@github.com:handsome-feng/new.git`
 
-git merge new-origin/master --allow-unreleated-histories
+`git merge new-origin/master --allow-unreleated-histories`
 
 #### 删除某个commit
 
-git rebase -i previous_commit
+`git rebase -i previous_commit`
 
 ### bzr to git
 
