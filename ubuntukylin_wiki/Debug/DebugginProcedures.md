@@ -24,3 +24,14 @@
    ```
 
 5. use apport-retrace as you're used to.
+
+
+
+### Compiling with debugging -g option
+
+```shell
+./autogen.sh
+./configure CFLAGS="-g -O0" #option A
+./configure --enable-debug  #option B
+```
+
