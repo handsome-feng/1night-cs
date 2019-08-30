@@ -85,13 +85,21 @@ Attach the complete output from GDB, contained in gdb-<program>.txt, in your bug
 
 `$ sudo fuser -v path/to/file`
 
+`$ lsof path/to/file`
+
 ### 察看多线程所有线程ID
 
 `$ ps -T`
 `$ top -H -p <pid>`　　//让top输出某个特定进程并检查该进程内运行的线程状况
 `$ htop`
 
+### 监控文件
 
+audit
+
+inotifywait
+
+inotifymoniter
 
 ### PS
 

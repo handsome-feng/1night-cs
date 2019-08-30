@@ -228,3 +228,22 @@ PPP: 点对点协议
 
 tcpdump   抓包
 wireshark 分析抓到的包
+
+
+
+### ss
+
+**ss 是 Socket Statistics 的缩写**。ss 命令可以用来获取 socket 统计信息，它显示的内容和 netstat 类似。但 ss 的优势在于它能够显示更多更详细的有关 TCP 和连接状态的信息，而且比 netstat 更快。
+
+常用选项:
+
+-h, --help 帮助
+-V, --version  显示版本号
+-t, --tcp 显示 TCP 协议的 sockets
+-u, --udp 显示 UDP 协议的 sockets
+-x, --unix 显示 **unix domain sockets**，与 -f 选项相同
+-n, --numeric 不解析服务的名称，如 "22" 端口不会显示成 "ssh"
+-l, --listening 只显示处于监听状态的端口
+-p, --processes 显示监听端口的进程(Ubuntu 上需要 sudo)
+-a, --all 对 TCP 协议来说，**既包含监听的端口，也包含建立的连接**
+-r, --resolve 把 IP 解释为域名，把端口号解释为协议名称
