@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>One night in cs</title>
+    
+    
+        <meta name="keywords" content="One night in cs">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="通用本地准备工作: ~/.bashrc: 1234export DEBFULLNAME=&amp;quot;handsome_feng&amp;quot;export DEBEMAIL=&amp;quot;jianfengli@ubuntukylin.com&amp;quot;alias mylintian=&amp;quot;lintian -i -EvIL +pedantic --verbose&amp;quot;alias mylicen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="One night in cs">
+<meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/debian&ubuntu/index.html">
+<meta property="og:site_name" content="One night in cs">
+<meta property="og:description" content="通用本地准备工作: ~/.bashrc: 1234export DEBFULLNAME=&amp;quot;handsome_feng&amp;quot;export DEBEMAIL=&amp;quot;jianfengli@ubuntukylin.com&amp;quot;alias mylintian=&amp;quot;lintian -i -EvIL +pedantic --verbose&amp;quot;alias mylicen">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-09-29T06:44:49.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="One night in cs">
+<meta name="twitter:description" content="通用本地准备工作: ~/.bashrc: 1234export DEBFULLNAME=&amp;quot;handsome_feng&amp;quot;export DEBEMAIL=&amp;quot;jianfengli@ubuntukylin.com&amp;quot;alias mylintian=&amp;quot;lintian -i -EvIL +pedantic --verbose&amp;quot;alias mylicen">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="One night in cs" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/1night-cs/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/1night-cs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/1night-cs/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/1night-cs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/1night-cs/css/style.css">
+    <script src="/1night-cs/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/1night-cs/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/1night-cs/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">One night in cs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/1night-cs/">首页</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/1night-cs/',
+        CONTENT_URL: '/1night-cs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/1night-cs/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            AI
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/AI/machine-learning/">machine-learning</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            algorithm
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            链表
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/algorithm/链表/单链表逆置/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/algorithm/动态规划/"></a></li>  <li class="file"><a href="/1night-cs/wiki/algorithm/algorithm/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            others
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/autoconf/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/cpp_styleguide/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/design-pattern/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/others/git/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/gpg/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/keyboard/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/kvm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/lightdm&greeter/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/linux_kerner/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/network/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/python/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/shell/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/vim/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            todo
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/todo/todo/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            ubuntukylin_wiki
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            DebianUbuntu
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/Theme/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/DebianMaintainer/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/Debuild/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/SRU/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/UbuntuMember/"></a></li>  <li class="file active"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/debian&ubuntu/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/involve/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/packaging/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/pbuilder/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/po/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/常用命令/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Debug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/DebugSymbolPakcages/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/DebugginProcedures/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/Doxygen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/debug/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/gdb/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            设备
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/显卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/网卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/触摸板/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/UK-NO1/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/dbus/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/seed/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/snap/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/版本制作/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/welcome/">Welcome the handsome feng's world</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-ubuntukylin_wiki/DebianUbuntu/debian&amp;ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h2><p>本地准备工作:</p>
+<p>~/.bashrc:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export DEBFULLNAME=&quot;handsome_feng&quot;</span><br><span class="line">export DEBEMAIL=&quot;jianfengli@ubuntukylin.com&quot;</span><br><span class="line">alias mylintian=&quot;lintian -i -EvIL +pedantic --verbose&quot;</span><br><span class="line">alias mylicensecheck=&quot;licensecheck -r . | grep -v &apos;UNKNOWN&apos;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>~/.</p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p><a href="https://cdimage.ubuntu.com" rel="external nofollow noopener noreferrer" target="_blank">镜像下载</a><br><a href="https://launchpad.net/ubuntu/+archivemirrors" rel="external nofollow noopener noreferrer" target="_blank">Mirros</a><br><a href="http://packages.ubuntu.com/" rel="external nofollow noopener noreferrer" target="_blank">Packages Search</a><br><a href="https://launchpad.net/ubuntu/+source/youker-assistant" rel="external nofollow noopener noreferrer" target="_blank">Source</a><br><a href="http://iso.qa.ubuntu.com/qatracker" rel="external nofollow noopener noreferrer" target="_blank">Testing tracker</a><br><a href="http://autopkgtest.ubuntu.com/" rel="external nofollow noopener noreferrer" target="_blank">Autopkgtest</a></p>
+<h4 id="seeds"><a href="#seeds" class="headerlink" title="seeds"></a>seeds</h4><p><a href="https://wiki.ubuntu.com/UbuntuStudio/Seeds" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/UbuntuStudio/Seeds</a><br><a href="https://wiki.ubuntu.com/SeedManagement" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/SeedManagement</a><br><a href="https://wiki.ubuntu.com/Germinate" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/Germinate</a><br><a href="https://wiki.ubuntu.com/ProposedMigration" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/ProposedMigration</a><br><a href="http://people.canonical.com/~ubuntu-archive/seeds/" rel="external nofollow noopener noreferrer" target="_blank">http://people.canonical.com/~ubuntu-archive/seeds/</a><br><a href="http://people.canonical.com/~ubuntu-archive/germinate-output/" rel="external nofollow noopener noreferrer" target="_blank">http://people.canonical.com/~ubuntu-archive/germinate-output/</a><br><a href="http://wiki.ubuntu.org.cn/" rel="external nofollow noopener noreferrer" target="_blank">Ubuntu中文WIKI</a><br><a href="https://help.ubuntu.com/lts/ubuntu-help/index.html" rel="external nofollow noopener noreferrer" target="_blank">Ubuntu桌面指南</a><br><a href="https://certification.ubuntu.com/certification/desktop/" rel="external nofollow noopener noreferrer" target="_blank">Ubuntu认证硬件</a><br>Debian新维护人员手册<br><a href="https://www.debian.org/doc/manuals/maint-guide/index.zh-cn.html" rel="external nofollow noopener noreferrer" target="_blank">https://www.debian.org/doc/manuals/maint-guide/index.zh-cn.html</a><br><a href="https://www.debian.org/doc/manuals/maint-guide/" rel="external nofollow noopener noreferrer" target="_blank">https://www.debian.org/doc/manuals/maint-guide/</a><br>Debian开发人员手册: <a href="https://www.debian.org/doc/manuals/developers-reference/" rel="external nofollow noopener noreferrer" target="_blank">https://www.debian.org/doc/manuals/developers-reference/</a><br>Debian打包指南:<br><a href="https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf" rel="external nofollow noopener noreferrer" target="_blank">https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf</a><br><a href="https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.zh_TW.pdf" rel="external nofollow noopener noreferrer" target="_blank">https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.zh_TW.pdf</a><br><a href="http://packaging.ubuntu.com/html/" rel="external nofollow noopener noreferrer" target="_blank">http://packaging.ubuntu.com/html/</a><br><a href="https://www.debian.org/doc/debian-policy/" rel="external nofollow noopener noreferrer" target="_blank">Debian Policy Manual</a><br><a href="https://lintian.debian.org/tags/" rel="external nofollow noopener noreferrer" target="_blank">lintian tags</a><br><a href="http://people.canonical.com/~ubuntu-archive/cd-build-logs/" rel="external nofollow noopener noreferrer" target="_blank">Daily build log</a><br><a href="http://autopkgtest.ubuntu.com/" rel="external nofollow noopener noreferrer" target="_blank">Ubuntu Autopkgtest Results</a><br>TechnicalBoard:<br><a href="https://wiki.ubuntu.com/TechnicalBoard" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/TechnicalBoard</a><br><a href="https://wiki.ubuntu.com/TechnicalBoardAgenda" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/TechnicalBoardAgenda</a><br>excuses(proposed迁移): <a href="http://people.canonical.com/~ubuntu-archive/proposed-migration/update_excuses.html" rel="external nofollow noopener noreferrer" target="_blank">http://people.canonical.com/~ubuntu-archive/proposed-migration/update_excuses.html</a><br>packagesets:        <a href="https://people.canonical.com/~ubuntu-archive/packagesets/bionic/" rel="external nofollow noopener noreferrer" target="_blank">https://people.canonical.com/~ubuntu-archive/packagesets/bionic/</a><br>License Information: <a href="https://ftp-master.debian.org/licenses/" rel="external nofollow noopener noreferrer" target="_blank">https://ftp-master.debian.org/licenses/</a><br>DeveloperMembershipBoard: <a href="https://wiki.ubuntu.com/DeveloperMembershipBoard" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/DeveloperMembershipBoard</a><br>Ubuntu Developers: <a href="https://wiki.ubuntu.com/UbuntuDevelopers/TeamDelegation" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/UbuntuDevelopers/TeamDelegation</a><br>Bugs/EmailInterface: <a href="https://help.launchpad.net/Bugs/EmailInterface" rel="external nofollow noopener noreferrer" target="_blank">https://help.launchpad.net/Bugs/EmailInterface</a><br>Live filesystem information: <a href="https://launchpad.net/~ubuntu-cdimage/+livefs/ubuntu/cosmic/ubuntukylin/" rel="external nofollow noopener noreferrer" target="_blank">https://launchpad.net/~ubuntu-cdimage/+livefs/ubuntu/cosmic/ubuntukylin/</a><br>Debian bug-tracking system: <a href="https://debian-administration.org/article/436/Using_the_Debian_bug-tracking_system" rel="external nofollow noopener noreferrer" target="_blank">https://debian-administration.org/article/436/Using_the_Debian_bug-tracking_system</a><br>debian archive:      <a href="https://salsa.debian.org/handsome_feng-guest" rel="external nofollow noopener noreferrer" target="_blank">https://salsa.debian.org/handsome_feng-guest</a><br>Debian new and byhand pakcages: <a href="https://ftp-master.debian.org/new.html" rel="external nofollow noopener noreferrer" target="_blank">https://ftp-master.debian.org/new.html</a><br><a href="https://irclogs.ubuntu.com" rel="external nofollow noopener noreferrer" target="_blank">Irc logs</a><br><a href="https://wiki.ubuntu.com/Releases" rel="external nofollow noopener noreferrer" target="_blank">Release</a><br><a href="http://changelogs.ubuntu.com/" rel="external nofollow noopener noreferrer" target="_blank">changelogs</a></p>
+<h3 id="常用流程"><a href="#常用流程" class="headerlink" title="常用流程"></a>常用流程</h3><h4 id="SponsorshipProcess"><a href="#SponsorshipProcess" class="headerlink" title="SponsorshipProcess"></a>SponsorshipProcess</h4><p><a href="https://wiki.ubuntu.com/SponsorshipProcess" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/SponsorshipProcess</a></p>
+<h4 id="FFe"><a href="#FFe" class="headerlink" title="FFe"></a>FFe</h4><p><a href="https://wiki.ubuntu.com/FreezeExceptionProcess" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/FreezeExceptionProcess</a></p>
+<h4 id="syncRequestProcess"><a href="#syncRequestProcess" class="headerlink" title="syncRequestProcess"></a>syncRequestProcess</h4><p><a href="https://wiki.ubuntu.com/SyncRequestProcess" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/SyncRequestProcess</a></p>
+<h3 id="打包工具"><a href="#打包工具" class="headerlink" title="打包工具"></a>打包工具</h3><p>SBuild:         <a href="https://wiki.ubuntu.com/SimpleSbuil" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/SimpleSbuil</a><br>DebDiff:        <a href="https://wiki.ubuntu.com/UbuntuStudio/DebDiff" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/UbuntuStudio/DebDiff</a></p>
+<p>在线工具</p>
+<p>在线贴图工具:    <a href="https://imgur.com/" rel="external nofollow noopener noreferrer" target="_blank">https://imgur.com/</a><br>在线贴文字工具:  <a href="https://paste.ubuntu.com/" rel="external nofollow noopener noreferrer" target="_blank">https://paste.ubuntu.com/</a></p>
+<p>在线gif制作:     <a href="http://www.soogif.com/" rel="external nofollow noopener noreferrer" target="_blank">http://www.soogif.com/</a><br>在线流程图:      <a href="https://www.processon.com/diagrams" rel="external nofollow noopener noreferrer" target="_blank">https://www.processon.com/diagrams</a> </p>
+<p>实用工具</p>
+<ol>
+<li>Youcompleteme</li>
+<li>gollum</li>
+<li>irssi</li>
+<li>goldendict</li>
+<li>Beyond Compare</li>
+<li>SS</li>
+<li>xdotool</li>
+</ol>
+<p>X window</p>
+<ul>
+<li>查看快捷键被谁捕获</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xdotool keydown "shift+Print"; xdotool key "XF86LogGrabInfo"; xdotool keyup "Print"; sleep 1; xdotool keyup "shift"; tail /var/log/Xorg.0.log</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他</li>
+</ul>
+<ol>
+<li>ANSI控制码: <a href="http://ascii-table.com/ansi-escape-sequences.php" rel="external nofollow noopener noreferrer" target="_blank">http://ascii-table.com/ansi-escape-sequences.php</a></li>
+</ol>
+<h2 id="Debian"><a href="#Debian" class="headerlink" title="Debian"></a>Debian</h2><h3 id="The-experimental-repository"><a href="#The-experimental-repository" class="headerlink" title="The experimental repository"></a>The experimental repository</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deb http://deb.debian.org/debian experimental main</span><br><span class="line">apt-get update</span><br><span class="line">apt-get -t experimental install packagename</span><br><span class="line"></span><br><span class="line">//listing all packages installed from experimental</span><br><span class="line">aptitude search ~S~i~Aexperimental</span><br></pre></td></tr></table></figure>
+
+<h3 id="Debian-version-numbering"><a href="#Debian-version-numbering" class="headerlink" title="Debian version numbering"></a>Debian version numbering</h3><p> The format is: [epoch:]upstream_version[-debian_revision]</p>
+<p>The three components here are:</p>
+<ul>
+<li>epoch<br>This is a single (generally small) unsigned integer. It may be omitted, in which case zero is assumed. If it is omitted then the upstream_version may not contain any colons. It is provided to allow mistakes in the version numbers of older versions of a package, and also a package’s previous version numbering schemes, to be left behind.<ul>
+<li>upstream_version<br>This is the main part of the version number. It is usually the version number of the original (“upstream”) package from which the .deb file has been made, if this is applicable. Usually this will be in the same format as that specified by the upstream author(s); however, it may need to be reformatted to fit into the package management system’s format and comparison scheme.<br>The comparison behavior of the package management system with respect to the upstream_version is described below. The upstream_version portion of the version number is mandatory.<br>The upstream_version may contain only alphanumerics[36] and the characters “.” (full stop), “+” (plus), “-“ (hyphen), “:” (colon), “~” (tilde) and should start with a digit. If there is no debian_revision then hyphens are not allowed; if there is no epoch then colons are not allowed.</li>
+<li>debian_revision<br>This part of the version number specifies the version of the Debian package based on the upstream version. It may contain only alphanumerics and the characters “.” (full stop), “+” (plus), “~” (tilde) and is compared in the same way as the upstream_version is.<br>It is optional; if it isn’t present then the upstream_version may not contain a hyphen. This format represents the case where a piece of software was written specifically to be a Debian package, where the Debian package source must always be identical to the pristine source and therefore no revision indication is required.<br>It is conventional to restart the debian_revision at 1 each time the upstream_version is increased.<br>The package management system will break the version number apart at the last hyphen in the string (if there is one) to determine the upstream_version and debian_revision. The absence of a debian_revision is equivalent to a debian_revision of 0.</li>
+<li>Comparison<br>When comparing two version numbers, first the epoch of each are compared, then the upstream_version if epoch is equal, and then debian_revision if upstream_version is also equal. epoch is compared numerically. The upstream_version and debian_revision parts are compared by the package management system using the following algorithm:<br>The strings are compared from left to right.<br>First the initial part of each string consisting entirely of non-digit characters is determined. These two parts (one of which may be empty) are compared lexically. If a difference is found it is returned. The lexical comparison is a comparison of ASCII values modified so that all the letters sort earlier than all the non-letters and so that a tilde sorts before anything, even the end of a part. For example, the following parts are in sorted order from earliest to latest: <del>, ~</del>a, ~, the empty part, a.<br>Then the initial part of the remainder of each string which consists entirely of digit characters is determined. The numerical values of these two parts are compared, and any difference found is returned as the result of the comparison. For these purposes an empty string (which can only occur at the end of one or both version strings being compared) counts as zero.<br>These two steps (comparing and removing initial non-digit strings and initial digit strings) are repeated until a difference is found or both strings are exhausted.<br>Note that the purpose of epochs is to allow us to leave behind mistakes in version numbering, and to cope with situations where the version numbering scheme changes. It is not intended to cope with version numbers containing strings of letters which the package management system cannot interpret (such as ALPHA or pre-), or with silly orderings.</li>
+</ul>
+</li>
+</ul>
+<p>ubuntu will indicate that the package has been built specifically for Ubuntu. The alpha and build strings don’t seem to have any particular meaning, but dfsg refers to a package that has been modified for compliance with the Debian Free Software Guidelines.</p>
+<h3 id="安装命令提示器"><a href="#安装命令提示器" class="headerlink" title="安装命令提示器"></a>安装命令提示器</h3><p>sudo apt install command-not-found</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/UbuntuMember/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/involve/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            handsome_feng &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/1night-cs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/1night-cs/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/1night-cs/js/main.js"></script>
+
+    </div>
+</body>

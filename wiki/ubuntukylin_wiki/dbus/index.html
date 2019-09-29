@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>One night in cs</title>
+    
+    
+        <meta name="keywords" content="One night in cs">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Debuggingexamples/dbus/remotecontrolledcar/controller/controller &amp;amp;QDBUS_DEBUG=1 examples/dbus/remotecontrolledcar/car/car &amp;amp; 自动启动ServiceD-Bus系统提供了一种机制可以在访问某个service时，自动把应用程序运行起来。需要在/usr/share/d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="One night in cs">
+<meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/ubuntukylin_wiki/dbus/index.html">
+<meta property="og:site_name" content="One night in cs">
+<meta property="og:description" content="Debuggingexamples/dbus/remotecontrolledcar/controller/controller &amp;amp;QDBUS_DEBUG=1 examples/dbus/remotecontrolledcar/car/car &amp;amp; 自动启动ServiceD-Bus系统提供了一种机制可以在访问某个service时，自动把应用程序运行起来。需要在/usr/share/d">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-09-29T06:44:49.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="One night in cs">
+<meta name="twitter:description" content="Debuggingexamples/dbus/remotecontrolledcar/controller/controller &amp;amp;QDBUS_DEBUG=1 examples/dbus/remotecontrolledcar/car/car &amp;amp; 自动启动ServiceD-Bus系统提供了一种机制可以在访问某个service时，自动把应用程序运行起来。需要在/usr/share/d">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="One night in cs" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/1night-cs/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/1night-cs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/1night-cs/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/1night-cs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/1night-cs/css/style.css">
+    <script src="/1night-cs/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/1night-cs/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/1night-cs/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">One night in cs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/1night-cs/">首页</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/1night-cs/',
+        CONTENT_URL: '/1night-cs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/1night-cs/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            AI
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/AI/machine-learning/">machine-learning</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            algorithm
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            链表
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/algorithm/链表/单链表逆置/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/algorithm/动态规划/"></a></li>  <li class="file"><a href="/1night-cs/wiki/algorithm/algorithm/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            others
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/autoconf/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/cpp_styleguide/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/design-pattern/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/others/git/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/gpg/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/keyboard/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/kvm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/lightdm&greeter/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/linux_kerner/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/network/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/python/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/shell/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/vim/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            todo
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/todo/todo/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            ubuntukylin_wiki
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DebianUbuntu
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/Theme/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/DebianMaintainer/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/Debuild/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/SRU/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/UbuntuMember/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/debian&ubuntu/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/involve/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/packaging/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/pbuilder/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/po/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/常用命令/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Debug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/DebugSymbolPakcages/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/DebugginProcedures/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/Doxygen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/debug/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/gdb/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            设备
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/显卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/网卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/触摸板/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/UK-NO1/"></a></li>  <li class="file active"><a href="/1night-cs/wiki/ubuntukylin_wiki/dbus/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/seed/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/snap/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/版本制作/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/welcome/">Welcome the handsome feng's world</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-ubuntukylin_wiki/dbus" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h3 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h3><p>examples/dbus/remotecontrolledcar/controller/controller &amp;<br>QDBUS_DEBUG=1 examples/dbus/remotecontrolledcar/car/car &amp;</p>
+<h3 id="自动启动Service"><a href="#自动启动Service" class="headerlink" title="自动启动Service"></a>自动启动Service</h3><p>D-Bus系统提供了一种机制可以在访问某个service时，自动把应用程序运行起来。需要在/usr/share/dbus-1/services下面建立com.scorpio.test.service文件，文件的内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[D-BUS Service]</span><br><span class="line">Name=com.scorpio.test</span><br><span class="line">Exec=/path/to/scorpio/test</span><br></pre></td></tr></table></figure>
+
+<h3 id="Qt-Dbus工具"><a href="#Qt-Dbus工具" class="headerlink" title="Qt Dbus工具"></a>Qt Dbus工具</h3><ul>
+<li><p>qdbusviewer</p>
+</li>
+<li><p>qdbuscpp2xml</p>
+<p>qdbuscpp2xml会解析QObject派生类的C++头文件或是源文件，生成D-Bus的内省xml文件。qdbuscpp2xml 会区分函数的输入输出，如果参数声明为const则会是输入，否则可能会被当作输出。<br>qdbuscpp2xml使用语法如下：<br><code>qdbuscpp2xml [options...] [files...]</code><br>Options参数如下：<br>-p|-s|-m：只解析脚本化的属性、信号、方法（槽函数）<br>-P|-S|-M：解析所有的属性、信号、方法（槽函数）<br>-a：输出所有的脚本化内容，等价于-psm<br>-A：输出所有的内容，等价于-PSM<br>-o filename：输出内容到filename文件<br>解析所有的方法输出到com.scorpio.test.xml文件命令如下：<br><code>qdbuscpp2xml -M test.h -o com.scorpio.test.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE node PUBLIC &quot;-//freedesktop//DTD D-BUS Object Introspection 1.0//EN&quot; &quot;http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd&quot;&gt;</span><br><span class="line">&lt;node&gt;</span><br><span class="line">  &lt;interface name=&quot;com.scorpio.test.value&quot;&gt;</span><br><span class="line">    &lt;method name=&quot;maxValue&quot;&gt;</span><br><span class="line">      &lt;arg type=&quot;i&quot; direction=&quot;out&quot;/&gt;</span><br><span class="line">    &lt;/method&gt;</span><br><span class="line">    &lt;method name=&quot;minValue&quot;&gt;</span><br><span class="line">      &lt;arg type=&quot;i&quot; direction=&quot;out&quot;/&gt;</span><br><span class="line">    &lt;/method&gt;</span><br><span class="line">    &lt;method name=&quot;value&quot;&gt;</span><br><span class="line">      &lt;arg type=&quot;i&quot; direction=&quot;out&quot;/&gt;</span><br><span class="line">    &lt;/method&gt;</span><br><span class="line">    &lt;method name=&quot;setValue&quot;&gt;</span><br><span class="line">      &lt;arg name=&quot;value&quot; type=&quot;i&quot; direction=&quot;in&quot;/&gt;</span><br><span class="line">    &lt;/method&gt;</span><br><span class="line">  &lt;/interface&gt;</span><br><span class="line">&lt;/node&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>qdbusxml2cpp</p>
+<p>qdbusxml2cpp根据输入文件中定义的接口，生成C++实现代码。<br>qdbusxml2cpp可以辅助自动生成继承于QDBusAbstractAdaptor和QDBusAbstractInterface两个类的实现代码，用于进程通信服务端和客户端，简化了开发者的代码设计。<br>qdbusxml2cpp使用语法如下：<br><code>qdbusxml2cpp [options...] [xml-or-xml-file] [interfaces...]</code><br>Options参数如下：<br>-a filename：输出Adaptor代码到filename<br>-c classname：使用classname作为生成类的类名<br>-i filename：增加#include到输出<br>-l classname：当生成Adaptor代码时，使用classname作为父类<br>-m：在cpp文件中包含 #include “filename.moc”语句<br>-N：不使用名称空间<br>-p filename：生成Proxy代码到filename文件<br>解析com.scorpio.test.xml文件，生成Adaptor类ValueAdaptor，文件名称为valueAdaptor.h、valueAdaptor.cpp命令行如下：<br><code>qdbusxml2cpp com.scorpio.test.xml -i test.h -a valueAdaptor</code><br>解析com.scorpio.test.xml文件，生成Proxy类ComScorpioTestValueInterface，文件名称为testInterface.h、testInterface.cpp命令行如下：<br><code>qdbusxml2cpp com.scorpio.test.xml -p testInterface</code></p>
+</li>
+</ul>
+<h3 id="dbus-daemon"><a href="#dbus-daemon" class="headerlink" title="dbus-daemon"></a>dbus-daemon</h3><p><a href="https://dbus.freedesktop.org/doc/dbus-daemon.1.html" rel="external nofollow noopener noreferrer" target="_blank">https://dbus.freedesktop.org/doc/dbus-daemon.1.html</a></p>
+<p><strong>D-Bus</strong> is first a library that provides one-to-one communication between any two applications; </p>
+<p><strong>dbus-daemon</strong> is an application that uses this library to implement a message bus daemon. Multiple programs connect to the message bus daemon and can exchange messages with one another.</p>
+<p>There are two standard message bus instances: </p>
+<p> systemwide message bus (installed on many systems as the “messagebus” init service) </p>
+<p>per-user-login-session message bus (started each time a user logs in).</p>
+<p>SIGHUP will cause the D-Bus daemon to PARTIALLY reload its configuration file and to flush its user/group information caches. Some configuration changes would require kicking all apps off the bus; so they will only take effect if you restart the daemon. Policy changes should take effect with SIGHUP.</p>
+<h3 id="configuration-file"><a href="#configuration-file" class="headerlink" title="configuration file"></a>configuration file</h3><p>The standard systemwide and per-session message bus setups are configured in the files “/usr/share/dbus-1/system.conf” and “/usr/share/dbus-1/session.conf”. These files normally <include> a system-local.conf or session-local.conf in /etc/dbus-1; you can put local overrides in those files to avoid modifying the primary configuration files.</include></p>
+<p>The standard system bus normally reads additional XML files from /usr/share/dbus-1/system.d. Third-party packages should install the default policies necessary for correct operation into that directory, which has been supported since dbus 1.10 (released in 2015).</p>
+<p>The standard system bus normally also reads XML files from /etc/dbus-1/system.d, which should be used by system administrators if they wish to override default policies.</p>
+<p>Third-party packages would historically install XML files into /etc/dbus-1/system.d, but this practice is now considered to be deprecated: that directory should be treated as reserved for the system administrator.</p>
+<ul>
+<li><policy>
+
+</policy></li>
+</ul>
+<p>The <policy> element defines a security policy to be applied to a particular set of connections to the bus. A policy is made up of <allow> and <deny> elements. Policies are normally used with the systemwide bus; they are analogous to a firewall in that they allow expected traffic and prevent unexpected traffic.</deny></allow></policy></p>
+<p>In general, it is best to keep system services as small, targeted programs which run in their own process and provide a single bus name. Then, all that is needed is an <allow> rule for the “own” permission to let the process claim the bus name, and a “send_destination” rule to allow traffic from some or all uids to your service.</allow></p>
+<p>Rules with one or more of the <code>send_</code>* family of attributes are checked in order when a connection attempts to send a message. The last rule that matches the message determines whether it may be sent. The well-known session bus normally allows sending any message. The well-known system bus normally allows sending any signal, selected method calls to the <strong>dbus-daemon</strong>, and exactly one reply to each previously-sent method call (either success or an error). Either of these can be overridden by configuration; on the system bus, services that will receive method calls must install configuration that allows them to do so, usually via rules of the form <code>&lt;policy context=&quot;default&quot;&gt;&lt;allow send_destination=&quot;…&quot;/&gt;&lt;policy&gt;</code>.</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/1night-cs/wiki/ubuntukylin_wiki/UK-NO1/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/1night-cs/wiki/ubuntukylin_wiki/seed/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            handsome_feng &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/1night-cs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/1night-cs/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/1night-cs/js/main.js"></script>
+
+    </div>
+</body>

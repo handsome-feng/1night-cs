@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>One night in cs</title>
+    
+    
+        <meta name="keywords" content="One night in cs">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="项目flatpak基本概念：运行时(runtimes):“运行时”提供应用程序所需的基本依赖。有各种各样的“运行时”,比如“Freedesktop运行时”，“GNOME运行时”。“Freedesktop运行时”包含一系列必要的库和服务，包括D-Bus, GLib, PulseAudio, X11和Wayland等。“GNOME运行时”基于“FreeDesktop运行时”，增加了一些GNOME平台相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="One night in cs">
+<meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/others/projects/index.html">
+<meta property="og:site_name" content="One night in cs">
+<meta property="og:description" content="项目flatpak基本概念：运行时(runtimes):“运行时”提供应用程序所需的基本依赖。有各种各样的“运行时”,比如“Freedesktop运行时”，“GNOME运行时”。“Freedesktop运行时”包含一系列必要的库和服务，包括D-Bus, GLib, PulseAudio, X11和Wayland等。“GNOME运行时”基于“FreeDesktop运行时”，增加了一些GNOME平台相">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-09-29T06:44:49.775Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="One night in cs">
+<meta name="twitter:description" content="项目flatpak基本概念：运行时(runtimes):“运行时”提供应用程序所需的基本依赖。有各种各样的“运行时”,比如“Freedesktop运行时”，“GNOME运行时”。“Freedesktop运行时”包含一系列必要的库和服务，包括D-Bus, GLib, PulseAudio, X11和Wayland等。“GNOME运行时”基于“FreeDesktop运行时”，增加了一些GNOME平台相">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="One night in cs" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/1night-cs/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/1night-cs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/1night-cs/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/1night-cs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/1night-cs/css/style.css">
+    <script src="/1night-cs/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/1night-cs/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/1night-cs/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">One night in cs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/1night-cs/">首页</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/1night-cs/',
+        CONTENT_URL: '/1night-cs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/1night-cs/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            AI
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/AI/machine-learning/">machine-learning</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            algorithm
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            链表
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/algorithm/链表/单链表逆置/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/algorithm/动态规划/"></a></li>  <li class="file"><a href="/1night-cs/wiki/algorithm/algorithm/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            others
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/autoconf/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/cpp_styleguide/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/design-pattern/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/others/git/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/gpg/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/keyboard/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/kvm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/lightdm&greeter/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/linux_kerner/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/network/"></a></li>  <li class="file active"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/python/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/shell/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/vim/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            todo
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/todo/todo/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ubuntukylin_wiki
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DebianUbuntu
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/Theme/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/DebianMaintainer/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/Debuild/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/SRU/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/UbuntuMember/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/debian&ubuntu/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/involve/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/packaging/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/pbuilder/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/po/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/DebianUbuntu/常用命令/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Debug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/DebugSymbolPakcages/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/DebugginProcedures/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/Doxygen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/debug/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/Debug/gdb/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            设备
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/显卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/网卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/设备/触摸板/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/UK-NO1/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/dbus/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/seed/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/snap/"></a></li>  <li class="file"><a href="/1night-cs/wiki/ubuntukylin_wiki/版本制作/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/welcome/">Welcome the handsome feng's world</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-others/projects" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><h3 id="flatpak"><a href="#flatpak" class="headerlink" title="flatpak"></a>flatpak</h3><p>基本概念：<br><strong>运行时(runtimes)</strong>:<br>“运行时”提供应用程序所需的基本依赖。有各种各样的“运行时”,比如“Freedesktop运行时”，“GNOME运行时”。“Freedesktop运行时”包含一系列必要的库和服务，包括D-Bus, GLib, PulseAudio, X11和Wayland等。“GNOME运行时”基于“FreeDesktop运行时”，增加了一些GNOME平台相关的库，比如GStreamer,GTK+,GVFS等。必须针对运行时构建每个应用程序，并且必须在主机系统上安装此运行时才能运行应用程序。用户可以同时安装多个不同的运行时，包括不同版本的同一个运行时。</p>
+<p>每一个运行时可以看做一个’/usr’ 文件系统，当程序运行时，它的运行时挂载在‘/usr’上。</p>
+<p><strong>捆绑库(Bundled libraries)</strong><br>当一个程序需要的依赖不在运行时中，使用捆绑库来绑定这些依赖到程序上。</p>
+<p><strong>SDK(软件开发套件)</strong><br>SDK也是一个“运行时”，是用于构建应用程序的特殊类型的运行时，它包含了构建和打包工具（‘devel’ parts），如头文件，编译器和调试器。通常，SDK与“运行时”配对，由应用程序使用。</p>
+<p><strong>扩展(Extensions)</strong><br>一个扩展是对于运行时或程序的可选插件，一般用于把translations和debug信息从运行时分离出来，比如, org.freedesktop.Platform.Locale 可以追加到org.freedesktop.Platform运行时上用来添加翻译。</p>
+<p><strong>沙箱（Sandbox）</strong><br>使用Flatpak，每个应用程序都是在孤立的环境中构建和运行的。默认情况下，应用程序只能“查看”自身及其“运行时”,访问用户文件，网络，graphics sockets，总线和设备上的子系统必须明确授予权限，访问其他内容（如其他进程）是不允许的。（可以通过Portals机制在沙箱内访问外面系统，比如打印，截图等）</p>
+<p>Flatpak主要使用了如下技术：</p>
+<ol>
+<li>bubblewrap：依赖它作为沙箱的底层实现,限制了应用程序访问操作系统或用户数据的能力，并且提供了非特权用户使用容器的能力。</li>
+<li>Systemd：将各个subsystem和cgroup树关联并挂载好，为沙箱创建 cgroups。</li>
+<li>D-Bus, 为应用程序提供高层APIs。</li>
+<li>使用Open Container Initiative的OCI格式作为单文件的传输格式，方便传输。</li>
+<li>使用OSTree系统用于版本化和分发文件系统树。</li>
+<li>使用Appstream元数据，使得Flatpak应用程序在软件中心可以完美呈现出来。</li>
+</ol>
+<p>附：<a href="http://www.ubuntukylin.com/news/shownews.php?lang=cn&id=664" rel="external nofollow noopener noreferrer" target="_blank">没想到你是这样的flatpak</a></p>
+<p><strong>bubblewrap</strong> uses <code>PR_SET_NO_NEW_PRIVS</code> to turn off setuid binaries, which is the <a href="https://en.wikipedia.org/wiki/Chroot#Limitations" rel="external nofollow noopener noreferrer" target="_blank">traditional way</a> to get out of things like chroots.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* Never gain any more privs during exec */</span><br><span class="line">  if (prctl (PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0) &lt; 0)</span><br></pre></td></tr></table></figure>
+
+<p>bubblewrap works by <strong>creating a new, completely empty, mount namespace</strong> where the root is on a tmpfs that is invisible from the host, and will be automatically cleaned up when the last process exits.<br>bubblewrap always creates a new mount namespace, and the user can specify exactly what parts of the filesystem should be visible in the sandbox.<br>Any such directories you specify mounted <code>nodev</code> by default, and can be made readonly.</p>
+<h4 id="namespaces"><a href="#namespaces" class="headerlink" title="namespaces"></a><strong>namespaces</strong></h4><p>目前，Linux内核里面实现了7种不同类型的namespace。</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">宏定义</th>
+<th align="left">隔离内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Cgroup</td>
+<td align="left">CLONE_NEWCGROUP</td>
+<td align="left">Cgroup root directory (since Linux 4.6)</td>
+</tr>
+<tr>
+<td align="left">IPC</td>
+<td align="left">CLONE_NEWIPC</td>
+<td align="left">System V IPC, POSIX message queues (since Linux 2.6.19)</td>
+</tr>
+<tr>
+<td align="left">Network</td>
+<td align="left">CLONE_NEWNET</td>
+<td align="left">Network devices, stacks, ports, etc. (since Linux 2.6.24)</td>
+</tr>
+<tr>
+<td align="left">Mount</td>
+<td align="left">CLONE_NEWNS</td>
+<td align="left">Mount points (since Linux 2.4.19)</td>
+</tr>
+<tr>
+<td align="left">PID</td>
+<td align="left">CLONE_NEWPID</td>
+<td align="left">Process IDs (since Linux 2.6.24)</td>
+</tr>
+<tr>
+<td align="left">User</td>
+<td align="left">CLONE_NEWUSER</td>
+<td align="left">User and group IDs (started in Linux 2.6.23 and completed in Linux 3.8)</td>
+</tr>
+<tr>
+<td align="left">UTS</td>
+<td align="left">CLONE_NEWUTS</td>
+<td align="left">Hostname and NIS domain name (since Linux 2.6.19)</td>
+</tr>
+</tbody></table>
+<p>查看当前bash进程所属的namespace: <code>ls -l /proc/$$/ns</code><br>namespace相关的函数:</p>
+<ol>
+<li>clone: 创建一个新的进程并把他放到新的namespace中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int clone(int (*child_func)(void *), void *child_statck, int flags, void *arg);</span><br><span class="line">flags: 指定一个或者多个上面的CLONE_NEW*(当然也可以包含跟namespace无关的flags),这样就会创建一个或多个新的不同类型的namespace,并新创建的子进程加入新创建的这些namespace中.</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>setns: 将当前进程加入到已有的namespace中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int setns(int fd, int nstype);</span><br><span class="line">fd: 指向/proc/[pid]/ns/目录里相应namespace对应的文件,表示要加入哪个namespace</span><br><span class="line">nstype: 指定nsmespace的类型:</span><br><span class="line">        1. 如果当前进程不能根据fd得到它的类型,如fd由其他进程创建,并通过UNIX domain socket传给当前进程,那么就需要通过nstype来制定fd指向的namespace的类型.</span><br><span class="line">        2. 如果进程能根据fd得到namespace类型,比如这个fd是由当前进程打开的,那么nstype设置为0即可.</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>unshare: 使当前进程退出指定类型的namespace,并加入到新创建的namespace(相当于创建并加入新的namespace)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int unshare(int flags);</span><br><span class="line">flags: 指定一个或者多个namespace类型,这样当前进程就退出了当前指定类型的namespace并加入到新创建的namespace</span><br></pre></td></tr></table></figure>
+
+<p>当一个namespace中的所有进程都退出时，该namespace将会被销毁。当然还有其他方法让namespace一直存在，假设我们有一个进程号为1000的进程，以ipc namespace为例：</p>
+<ol>
+<li>通过mount –bind命令。例如mount –bind /proc/1000/ns/ipc /other/file，就算属于这个ipc namespace的所有进程都退出了，只要/other/file还在，这个ipc namespace就一直存在，其他进程就可以利用/other/file，通过setns函数加入到这个namespace</li>
+<li>在其他namespace的进程中打开/proc/1000/ns/ipc文件，并一直持有这个文件描述符不关闭，以后就可以用setns函数加入这个namespace。</li>
+</ol>
+<h3 id="unity7"><a href="#unity7" class="headerlink" title="unity7"></a>unity7</h3><p>Compiz窗口管理器的一个插件，使用nux(opengl)图形库。部分采用cario直接绘制。<br>添加动态调整整体布局以及kylin style的锁屏和dash，通过监控gsettings设置，条件判断+工厂模式。</p>
+<h3 id="unity8"><a href="#unity8" class="headerlink" title="unity8"></a>unity8</h3><p>The Unity 8 Desktop Preview is the new Unity 8 desktop shell running on the Mir display technology.<br>unity8(c++ + qml) + mir<br>If you want to run X11 applications that do not have native Mir support in the toolkit they use then the answer is an X11 server that runs on Mir. That could be either Xmir or Xwayland.</p>
+<h3 id="ukui"><a href="#ukui" class="headerlink" title="ukui"></a>ukui</h3><p>会话管理器, 按照X 会话管理协议 (XSMP)<br>会话管理协议的主要部分是：</p>
+<ol>
+<li>会话管理器为每个客户端选择一个唯一的标识符</li>
+<li>会话管理器需要客户端保存他们的状态</li>
+<li>客户端指定它该如何重启以便恢复状态（例如，使用命令行来启动程序）</li>
+</ol>
+<h3 id="窗口管理器"><a href="#窗口管理器" class="headerlink" title="窗口管理器"></a>窗口管理器</h3><p>使用窗口管理器时，Xserver 并不直接与其它 Xclient 通信，而是通过WM中转，当一些消息被定义为WM指令时，它们会被拦截。例如 Alt+F4 关闭窗口、拖动标题栏……</p>
+<p><strong>系统启动过程</strong>：<br>内核加载 –&gt; init程序运行 –&gt; systemd -&gt; 显示管理器运行(众多服务之一) –&gt; X Server 运行 –&gt; 显示管理器连接到 X Server，显示登录界面 –&gt; 用户登录后，登录界面关闭，加载桌面环境</p>
+<p>从上面的流程可以看出，显示管理器是 X Server 的父进程，它负责启动 X Server，当 X Server 启动后，它又变成了 X Server 的一个 Client 程序，连接到 X Server 显示欢迎界面和登录界面，最后，显示管理器又是所有桌面环境的父进程，它负责启动桌面环境需要的其它 Client 程序。</p>
+<p>lightdm 在启动 X Server 的时候，给 X Server 加上了 -nolisten tcp 参数，所以远程计算机就没有办法连接到 Ubuntu 的桌面了。</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/1night-cs/wiki/others/network/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/1night-cs/wiki/others/python/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            handsome_feng &copy; 2019 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/1night-cs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/1night-cs/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/1night-cs/js/main.js"></script>
+
+    </div>
+</body>
