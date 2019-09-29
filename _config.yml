@@ -14,8 +14,8 @@ timezone: Asia/Shanghai
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://handsome-feng.github.io/1night-cs
-root: /1night-cs
-permalink: :year/:month/:day/:title/
+root: /1night-cs/
+permalink: wiki/:title/
 #permalink_defaults:
 
 # Directory
@@ -112,5 +112,5 @@ theme: Wikitten
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  reposiroty: https://github.com/handsome-feng/1night-cs.github.io
+  reposiroty: https://github.com/handsome-feng/1night-cs.git
   branch: master
