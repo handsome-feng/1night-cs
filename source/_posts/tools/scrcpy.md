@@ -1,3 +1,9 @@
+---
+title: scrcpy
+---
+
+
+
 [Home page](https://github.com/Genymobile/scrcpy)
 
 ### Shortcuts

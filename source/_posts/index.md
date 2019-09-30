@@ -1,16 +1,8 @@
-[Ubuntu&Debian](Debian&Ubuntu.md)
-
-[Git](git.md)
-
-[C](linux_c.md)
-
-[vim](vim.md)
-
 ### 在线工具
-在线贴图工具:    https://imgur.com/
-在线贴文字工具:  https://paste.ubuntu.com/
-在线gif制作:     http://www.soogif.com/
-在线流程图:      https://www.processon.com/diagrams
+[在线贴图工具](https://imgur.com/)
+[在线贴文字工具](https://paste.ubuntu.com/)
+[在线gif制作](http://www.soogif.com/)
+[在线流程图](https://www.processon.com/diagrams)
 
 ### 实用工具
 
@@ -41,7 +33,7 @@
 ### 常用命令
 
   1. 包管理
-    2. 系统监控
+        2. 系统监控
        * 网络
          * ifconfig
          * netstat
@@ -55,4 +47,4 @@
 
 ### 其他
 
- 1. ANSI控制码: http://ascii-table.com/ansi-escape-sequences.php
+ 1. [ANSI控制码](http://ascii-table.com/ansi-escape-sequences.php)
