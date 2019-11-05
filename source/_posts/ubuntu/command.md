@@ -110,3 +110,11 @@ sudo /sbin/hdparm -i /dev/sda | grep -i serialno #硬盘序列号
 
 
 
+用户管理：
+
+adduser feng
+
+usermod -aG sudo feng
+
+
+

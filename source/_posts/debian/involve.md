@@ -2,30 +2,25 @@
 title: How can I help
 ---
 
+### Preparation
 
+sudo apt install how-can-i-help
 
-## Debian
+sudo apt install command-not-found
 
-`sudo apt install how-can-i-help`
-
-
-
-```
 Generic instructions: https://mentors.debian.net/intro-maintainers
 Reintroducing packages: https://www.debian.org/doc/manuals/developers-reference/ch05.en.html#reintroducing-pkgs
+
+
+
+### Report Bug
+
+```
+sudo apt install python3-gi-cairo gir1.2-vte-2.91
+reportbug --ui gtk2
 ```
 
 
-
-## Report Bug
-
-$ sudo apt install python3-gi-cairo gir1.2-vte-2.91
-
-reportbug --ui gtk2
-
-
-
-## Debian
 
 ### The experimental repository
 
@@ -69,6 +64,89 @@ ubuntu will indicate that the package has been built specifically for Ubuntu. Th
 
 
 
-### 安装命令提示器
+### Prepare patches for Debian package
 
-sudo apt install command-not-found
+#### 1. Retrieve the source package and install build-dependencies
+
+The first step is to retrieve the latest version of the source package and to install the required build-dependencies. 
+
+If you prefer, you can use dget (from the devscripts package) to directly grab the source package. You can find the URL of the .dsc files in the Package Tracking System for example.
+
+ you can use debcheckout to retrieve the VCS repository instead (provided that you have the corresponding VCS installed):
+
+```
+$ debcheckout wordpress
+declared git repository at git://git.debian.org/git/collab-maint/wordpress.git
+git clone git://git.debian.org/git/collab-maint/wordpress.git wordpress ...
+Cloning into wordpress...
+```
+
+It’s also a good idea to install the package “packaging-dev”. It's a meta-package depending on the most common tools that are used for Debian packaging work.
+
+
+
+#### 2. Do the changes
+Execute dch --nmu to record the fact that you’re working on an update prepared by someone who is not the maintainer (NMU means Non Maintainer Upload). This also ensures that if we build the package, we won't overwrite the original source package that we downloaded, thus making it possible to generate a "diff" between both versions.
+
+##### 2.1. Modify Debian packaging files
+Now fire your text editor and do the required changes in the “debian” sub-directory. You will probably run dch -a multiple times to document each subsequent change.
+
+##### 2.2. Modify upstream files
+If you have to modify upstream files, the proper way to do it depends on the source package format (“1.0” vs “3.0 (quilt)” vs “3.0 (native)”, see the debian/source/format file) and on the presence or not of a patch system (the what-patch can help you identify it). In this explanation, I’ll assume that the package is using the recommended format: “3.0 (quilt)”. (It also works for “1.0” if quilt is used and if you configured ~/.quiltrc as recommended by /usr/share/doc/quilt/README.source).
+
+First you should ensure that all patches have been applied with quilt push -a. If there’s no patch yet, you want to create the debian/patches directory (with mkdir debian/patches). Note that you should better invoke quilt from the root of the source package (and the examples below assume this).
+
+###### 2.2.1 Import a patch
+If the upstream changes are already in a patch file (say /tmp/patch that you downloaded from the upstream VCS repository) you can import that patch like this:
+
+$ quilt import -P fix-foobar.patch /tmp/patch
+Importing patch /tmp/patch (stored as fix-foobar.patch)
+$ quilt push
+Applying patch fix-foobar.patch
+[...]
+Now at patch fix-foobar.patch
+The -P option allows to select the name of the patch file created in debian/patches/. As you see, the new patch file is recorded in debian/patches/series but not applied by default, we’re thus doing it with quilt push.
+
+###### 2.2.2. Create a new patch
+If the upstream changes that you want to make are not in a patch yet, you should tell quilt that you’re going to create one:
+
+$ quilt new fix-foobar.patch
+Patch fix-foobar.patch is now on top
+Then you must record every file that you’re going to modify with a quilt add invocation. quilt then makes a backup of those files so that it can generate the patch later on. If you’re going to modify the files with your text editor you can just do quilt edit file-to-modify, it’s the same than quilt add file-to-modify followed by sensible-editor file-to-modify.
+
+$ quilt edit foobar.c
+File foobar.c added to patch fix-foobar.patch
+The last step is tell quilt to generate the patch:
+
+$ quilt refresh
+Refreshed patch fix-foobar.patch
+#### 3. Test your changes
+You should build your modified package with “debuild -us -uc”. You can easily install the resulting package with “debi”. Verify that everything works as expected. If not, continue your modifications until you’re satisfied with the result.
+
+#### 4. Generate a patch and mail it
+If you followed the instructions, you should have two .dsc files in the parent directory, like this:
+
+```
+$ cd ..
+$ ls wordpress_*.dsc
+../wordpress_3.0.5+dfsg-1.1.dsc
+../wordpress_3.0.5+dfsg-1.dsc
+```
+
+
+Generating the patch to send to the maintainer is then just a matter of running debdiff:
+
+```
+$ debdiff wordpress_3.0.5+dfsg-1.dsc wordpress_3.0.5+dfsg-1.1.dsc >/tmp/wp-debdiff
+```
+
+You can send the /tmp/wp-debdiff file to the wordpress maintainer. Usually you send it via the bugreport that your update is fixing and you add the "patch" tag to the report.
+
+This can be automated with the nmudiff utility. By default it assumes that you’re using mutt but it can also directly feed the resulting mail to sendmail. The default text that nmudiff proposes assumes that you’re actually performing an NMU and that the result has been uploaded. If that’s not the case, you should edit the text and make it clear that you're just sending a patch.
+
+Tag the bug as "patch available" by running
+
+```
+bts tags [bugnumber] + patch
+```
+
