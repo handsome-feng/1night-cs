@@ -120,6 +120,18 @@ The last step is tell quilt to generate the patch:
 
 $ quilt refresh
 Refreshed patch fix-foobar.patch
+
+###### 2.2.3 Patch Headers
+
+We recommend that you tag every patch with [DEP-3](http://dep.debian.net/deps/dep3/) headers by putting them at the top of patch file. Here are some headers that you can use:
+
+**Description**:	Description of what the patch does. It is formatted like Description field in debian/control: first line is short description, starting with lowercase letter, the next lines are long description, indented with a space.
+**Author**:	Who wrote the patch (i.e. “Jane Doe <packager@example.com>”).
+**Origin**:	Where this patch comes from (i.e. “upstream”), when Author is not present.
+Bug-Ubuntu:	A link to Launchpad bug, a short form is preferred (like https://bugs.launchpad.net/bugs/XXXXXXX). If there are also bugs in upstream or Debian bugtrackers, add Bug or Bug-Debian headers.
+**Forwarded**:	Whether the patch was forwarded upstream. Either “yes”, “no” or “not-needed”.
+**Last-Update**:	Date of the last revision (in form “YYYY-MM-DD”).
+
 #### 3. Test your changes
 You should build your modified package with “debuild -us -uc”. You can easily install the resulting package with “debi”. Verify that everything works as expected. If not, continue your modifications until you’re satisfied with the result.
 
