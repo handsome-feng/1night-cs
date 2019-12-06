@@ -62,8 +62,10 @@ title: 手动定制优麒麟镜像
        rm /etc/apt/sources.list.d/feng-kylin-*
        rm /var/lib/apt/lists/ppa.launchpad.net_feng-kylin_1810aid_ubuntu_dists_cosmic_*
        apt-get clean
+       rm /var/lib/apt/periodic/update-success-stamp
        vim.tiny /etc/resolv.conf
        vim.tiny /etc/apt/sources.list
+       history -c
        ```
 
 9. 退出chroot前最后一个操作：
@@ -128,6 +130,8 @@ title: 手动定制优麒麟镜像
     ```
     sudo rm md5sum.txt
     find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
+    sudo chown feng:feng md5sum.txt
+    sudo chmod -w md5sum.txt
     ```
 
 18. 进入到uk64目录，压缩镜像

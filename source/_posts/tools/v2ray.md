@@ -26,3 +26,26 @@ sudo systemctl start v2ray
 
 
 chromium --proxy-server="socks5://127.0.0.1:1080"
+
+
+
+终端代理：
+
+1. export（测试无效）
+
+```
+export http_proxy=127.0.0.1:1080
+export https_proxy=127.0.0.1:1080
+```
+
+2. Use proxychains:
+
+sudo proxychains apt update
+
+vim /etc/proxychains.conf
+
+```
+[ProxyList]
+socks5 127.0.0.1 1080
+```
+
