@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="One night in cs">
 <meta property="og:description" content="手动集成版本流程如下： 点击基础iso镜像，右键挂载镜像:   sudo mount xxx.iso /mnt/uk64  创建一个image-iso目录，拷贝挂载镜像的所有文件到image-iso目录（注意隐藏文件不要漏掉了）   cd /image-iso   rsync -a /mnt/uk64 .  将image-iso/casper/filesystem.squashfs 移动到工作目录">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-11-25T09:19:33.095Z">
+<meta property="og:updated_time" content="2019-12-06T09:27:12.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手动定制优麒麟镜像">
 <meta name="twitter:description" content="手动集成版本流程如下： 点击基础iso镜像，右键挂载镜像:   sudo mount xxx.iso /mnt/uk64  创建一个image-iso目录，拷贝挂载镜像的所有文件到image-iso目录（注意隐藏文件不要漏掉了）   cd /image-iso   rsync -a /mnt/uk64 .  将image-iso/casper/filesystem.squashfs 移动到工作目录">
@@ -256,7 +256,7 @@
                             &nbsp;
                             tools
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory open">
@@ -356,7 +356,7 @@
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/1night-cs/wiki/ubuntu/custom-iso/">
-            <time datetime="2019-11-25T09:19:33.095Z" itemprop="datePublished">2019-11-25</time>
+            <time datetime="2019-12-06T09:27:12.344Z" itemprop="datePublished">2019-12-06</time>
         </a>
     </div>
 
@@ -427,7 +427,7 @@
 <p><code>fc-cache -v -f</code></p>
 </li>
 <li><p>还原定制版本中修改的配置文件及清除缓存，如/etc/resolv.conf文件，/var/cache/apt/archives目录下的deb包，/var/lib/apt/lists目录下的apt更新list文件等</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository -r ppa:feng-kylin/1810aid</span><br><span class="line">rm /etc/apt/sources.list.d/feng-kylin-*</span><br><span class="line">rm /var/lib/apt/lists/ppa.launchpad.net_feng-kylin_1810aid_ubuntu_dists_cosmic_*</span><br><span class="line">apt-get clean</span><br><span class="line">vim.tiny /etc/resolv.conf</span><br><span class="line">vim.tiny /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository -r ppa:feng-kylin/1810aid</span><br><span class="line">rm /etc/apt/sources.list.d/feng-kylin-*</span><br><span class="line">rm /var/lib/apt/lists/ppa.launchpad.net_feng-kylin_1810aid_ubuntu_dists_cosmic_*</span><br><span class="line">apt-get clean</span><br><span class="line">rm /var/lib/apt/periodic/update-success-stamp</span><br><span class="line">vim.tiny /etc/resolv.conf</span><br><span class="line">vim.tiny /etc/apt/sources.list</span><br><span class="line">history -c</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -456,7 +456,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mv uk64/isolinux/bootlogo .</span><br><span class="line">mkdir bootlogo-tmp &amp;&amp; cd bootlogo-tmp</span><br><span class="line">cpio -i &lt; ../bootlogo</span><br><span class="line">sudo vim txt.cfg lang langlist</span><br><span class="line">ls -1 | cpio --quiet -o &gt; ./bootlogo</span><br><span class="line">sudo cp * ../uk64/isolinux</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>进入到image-iso目录，更新md5值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm md5sum.txt</span><br><span class="line">find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo rm md5sum.txt</span><br><span class="line">find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt</span><br><span class="line">sudo chown feng:feng md5sum.txt</span><br><span class="line">sudo chmod -w md5sum.txt</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>进入到uk64目录，压缩镜像</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1 -V Ubuntu-Kylin\ 19.04 -o ubuntukylin-19.04-amd64.iso -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus uk64/</span><br></pre></td></tr></table></figure>
