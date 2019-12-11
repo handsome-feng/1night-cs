@@ -44,6 +44,7 @@
 
  1. Flatpak
  2. Snap
+  3. Appimage
 
 ### 其他
 

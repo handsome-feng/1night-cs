@@ -29,10 +29,22 @@ chromium --proxy-server="socks5://127.0.0.1:1080"
 
 
 
-sudo apt install proxychins
+终端代理：
 
-sudo vim /etc/proxychains.conf
+1. export（测试无效）
 
-proxychains dput xxx.changes
+```
+export http_proxy=127.0.0.1:1080
+export https_proxy=127.0.0.1:1080
+```
+
+2. Use proxychains:
 
 sudo proxychains apt update
+
+vim /etc/proxychains.conf
+
+```
+[ProxyList]
+socks5 127.0.0.1 1080
+```
