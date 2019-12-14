@@ -9,19 +9,19 @@
         <meta name="keywords" content="i18n/l10n">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo.po// Edit foo.pomsgfmt foo.po -o foo.mo">
+    <meta name="description" content="Gettext 1msginit -l bo  //根据当前目录下pot文件，生成bo.po  1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="i18n&#x2F;l10n">
 <meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/ubuntu/i18n-l10n/index.html">
 <meta property="og:site_name" content="One night in cs">
-<meta property="og:description" content="1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo.po// Edit foo.pomsgfmt foo.po -o foo.mo">
+<meta property="og:description" content="Gettext 1msginit -l bo  //根据当前目录下pot文件，生成bo.po  1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://handsome-feng.github.io/1night-cs/wiki/pics/gettext.svg">
-<meta property="og:updated_time" content="2019-12-11T07:13:58.632Z">
+<meta property="og:image" content="https://handsome-feng.github.io/1night-cs/wiki/ubuntu/pics/gettext.svg">
+<meta property="og:updated_time" content="2019-12-14T07:07:13.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="i18n&#x2F;l10n">
-<meta name="twitter:description" content="1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo.po// Edit foo.pomsgfmt foo.po -o foo.mo">
-<meta name="twitter:image" content="https://handsome-feng.github.io/1night-cs/wiki/pics/gettext.svg">
+<meta name="twitter:description" content="Gettext 1msginit -l bo  //根据当前目录下pot文件，生成bo.po  1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo">
+<meta name="twitter:image" content="https://handsome-feng.github.io/1night-cs/wiki/ubuntu/pics/gettext.svg">
     
 
     
@@ -358,7 +358,7 @@
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/1night-cs/wiki/ubuntu/i18n-l10n/">
-            <time datetime="2019-12-11T07:13:58.632Z" itemprop="datePublished">2019-12-11</time>
+            <time datetime="2019-12-14T07:07:13.609Z" itemprop="datePublished">2019-12-14</time>
         </a>
     </div>
 
@@ -396,7 +396,9 @@
             
         
         
-            <p><img src="../../pics/gettext.svg" alt="gettext" title="Typical gettext workflow"></p>
+            <h2 id="Gettext"><a href="#Gettext" class="headerlink" title="Gettext"></a>Gettext</h2><p><img src="../pics/gettext.svg" alt="gettext" title="Typical gettext workflow"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msginit -l bo  //根据当前目录下pot文件，生成bo.po</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done</span><br></pre></td></tr></table></figure>
 
 <p>修改po文件：</p>
@@ -409,6 +411,11 @@
 
 </li>
 </ol>
+<h3 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h3><p>hello.pro</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TRANSLATIONS = zh_CN.ts \</span><br><span class="line">               bo.ts</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lupdate -pro hello.pro</span><br><span class="line">lrelease zh_CN.ts</span><br></pre></td></tr></table></figure>
+
 
             </div>
         
