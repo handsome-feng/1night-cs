@@ -9,17 +9,17 @@
         <meta name="keywords" content="One night in cs">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="数据结构树二叉树本质二叉树，本质上，是对链表和数组的一个折中在链表中，插入、删除速度很快，但查找速度较慢。在数组中，查找速度很快，但插入删除速度很慢。为了解决这个问题，找寻一种能够在插入、删除、查找、遍历等操作都相对快的容器，于是人们发明了二叉树。 二叉搜索树若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子">
+    <meta name="description" content="数据结构概述数据是客观事物的符号表示，是对现实世界的事物采用计算机能够识别、存储和处理的形式进行描述的符号的集合。 数据元素是数据的基本单位 数据对象是性质相同的数据元素的集合，是数据集合的一个子集 数据结构的概念应包括三个方面：  数据元素及数据元素之间的逻辑关系，也称为数据的逻辑结构 数据元素及数据元素之间的关系在计算机中的存储表示，也称为数据的存储结构或物理结构 数据的运算，即对数据施加的操">
 <meta property="og:type" content="article">
 <meta property="og:title" content="One night in cs">
 <meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/algorithm/algorithm/index.html">
 <meta property="og:site_name" content="One night in cs">
-<meta property="og:description" content="数据结构树二叉树本质二叉树，本质上，是对链表和数组的一个折中在链表中，插入、删除速度很快，但查找速度较慢。在数组中，查找速度很快，但插入删除速度很慢。为了解决这个问题，找寻一种能够在插入、删除、查找、遍历等操作都相对快的容器，于是人们发明了二叉树。 二叉搜索树若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子">
+<meta property="og:description" content="数据结构概述数据是客观事物的符号表示，是对现实世界的事物采用计算机能够识别、存储和处理的形式进行描述的符号的集合。 数据元素是数据的基本单位 数据对象是性质相同的数据元素的集合，是数据集合的一个子集 数据结构的概念应包括三个方面：  数据元素及数据元素之间的逻辑关系，也称为数据的逻辑结构 数据元素及数据元素之间的关系在计算机中的存储表示，也称为数据的存储结构或物理结构 数据的运算，即对数据施加的操">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-12-14T07:07:13.557Z">
+<meta property="og:updated_time" content="2020-01-25T03:05:21.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="One night in cs">
-<meta name="twitter:description" content="数据结构树二叉树本质二叉树，本质上，是对链表和数组的一个折中在链表中，插入、删除速度很快，但查找速度较慢。在数组中，查找速度很快，但插入删除速度很慢。为了解决这个问题，找寻一种能够在插入、删除、查找、遍历等操作都相对快的容器，于是人们发明了二叉树。 二叉搜索树若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子">
+<meta name="twitter:description" content="数据结构概述数据是客观事物的符号表示，是对现实世界的事物采用计算机能够识别、存储和处理的形式进行描述的符号的集合。 数据元素是数据的基本单位 数据对象是性质相同的数据元素的集合，是数据集合的一个子集 数据结构的概念应包括三个方面：  数据元素及数据元素之间的逻辑关系，也称为数据的逻辑结构 数据元素及数据元素之间的关系在计算机中的存储表示，也称为数据的存储结构或物理结构 数据的运算，即对数据施加的操">
     
 
     
@@ -349,7 +349,46 @@
             
         
         
-            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h4><p>二叉树，本质上，是对链表和数组的一个折中<br>在链表中，插入、删除速度很快，但查找速度较慢。<br>在数组中，查找速度很快，但插入删除速度很慢。<br>为了解决这个问题，找寻一种能够在插入、删除、查找、遍历等操作都相对快的容器，于是人们发明了二叉树。</p>
+            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>数据</strong>是客观事物的符号表示，是对现实世界的事物采用计算机能够识别、存储和处理的形式进行描述的符号的集合。</p>
+<p><strong>数据元素</strong>是数据的基本单位</p>
+<p><strong>数据对象</strong>是性质相同的数据元素的集合，是数据集合的一个子集</p>
+<p><strong>数据结构</strong>的概念应包括三个方面：</p>
+<ul>
+<li>数据元素及数据元素之间的逻辑关系，也称为数据的<strong>逻辑结构</strong></li>
+<li>数据元素及数据元素之间的关系在计算机中的存储表示，也称为数据的<strong>存储结构</strong>或物理结构</li>
+<li>数据的<strong>运算</strong>，即对数据施加的操作</li>
+</ul>
+<p><strong>数据类型</strong>是一组性质相同的值的集合以及定义在这个集合上的一组操作的总称。</p>
+<p>数据的逻辑结构分为：</p>
+<ul>
+<li><p><strong>线性结构</strong>中有且仅有一个开始结点和一个终端结点，并且所有的结点最多只有一个前驱和一个后继。</p>
+</li>
+<li><p><strong>非线性结构</strong>中的一个结点可能有多个前驱和后继。</p>
+</li>
+</ul>
+<p>存储结构：<strong>顺序存储</strong>、<strong>链接存储</strong>、<strong>索引存储</strong>、<strong>散列存储</strong></p>
+<p>高级程序语言中，数据类型分为<strong>基本类型</strong>和<strong>组合类型</strong></p>
+<p><strong>抽象</strong>：从特定的实例中抽取共同的性质形成一般化概念的过程</p>
+<p>数据抽象</p>
+<p>模块化</p>
+<p>信息隐蔽</p>
+<p>抽象数据类型：指抽象数据的组织和与之相关的操作</p>
+<p>算法应当具有的特性：</p>
+<ul>
+<li>输入</li>
+<li>输出</li>
+<li>确定性</li>
+<li>有穷性</li>
+<li>可行性</li>
+</ul>
+<p>好的算法应满足：</p>
+<ul>
+<li>正确性</li>
+<li>可读性</li>
+<li>健壮性</li>
+<li>时间效率和存储占用量</li>
+</ul>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h4><p>二叉树，本质上，是对链表和数组的一个折中<br>在链表中，插入、删除速度很快，但查找速度较慢。<br>在数组中，查找速度很快，但插入删除速度很慢。<br>为了解决这个问题，找寻一种能够在插入、删除、查找、遍历等操作都相对快的容器，于是人们发明了二叉树。</p>
 <h4 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h4><p>若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。</p>
 <h4 id="哈夫曼树（最优二叉树）"><a href="#哈夫曼树（最优二叉树）" class="headerlink" title="哈夫曼树（最优二叉树）"></a>哈夫曼树（最优二叉树）</h4><p>通过某种规则（权值）来构造出一哈夫曼二叉树，在这个二叉树中，只有叶子节点才是有效的数据节点（很重要），其他的非叶子节点是为了构造出哈夫曼而引入的。</p>
 <h4 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h4><p>那么为了能够以较快的时间O(logN)来搜索一棵树，我们需要保证树总是平衡的（或者大部分是平衡的），也就是说每个节点的左子树节点个数和右子树节点个数尽量相等。红-黑树的就是这样的一棵平衡树，对一个要插入的数据项（删除也是），插入例程要检查会不会破坏树的特征，如果破坏了，程序就会进行纠正，根据需要改变树的结构，从而保持树的平衡。</p>
@@ -494,7 +533,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            handsome_feng &copy; 2019 
+            handsome_feng &copy; 2020 
             <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
             <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
             
