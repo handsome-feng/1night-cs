@@ -149,6 +149,14 @@ echo "+++ end of lintian output +++"
 
 
 
+### For multi-arch
+
+pbuilder-dist jessie armhf create
+
+pbuilder-dist jessie armhf bb_1.3rc1-8.3.dsc
+
+
+
 ### Reference
 
 https://wiki.ubuntu.com/PbuilderHowto
