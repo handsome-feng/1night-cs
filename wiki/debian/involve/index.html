@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="One night in cs">
 <meta property="og:description" content="Preparationsudo apt install how-can-i-help sudo apt install command-not-found Generic instructions: https://mentors.debian.net/intro-maintainersReintroducing packages: https://www.debian.org/doc/manua">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-01-25T03:05:21.676Z">
+<meta property="og:updated_time" content="2020-02-29T03:56:11.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How can I help">
 <meta name="twitter:description" content="Preparationsudo apt install how-can-i-help sudo apt install command-not-found Generic instructions: https://mentors.debian.net/intro-maintainersReintroducing packages: https://www.debian.org/doc/manua">
@@ -193,7 +193,7 @@
                             &nbsp;
                             debian
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debian/DebianMaintainer/">Debian Maintainer</a></li>  <li class="file"><a href="/1night-cs/wiki/debian/NonMaintainerUpload/"></a></li>  <li class="file active"><a href="/1night-cs/wiki/debian/involve/">How can I help</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debian/DebianMaintainer/">Debian Maintainer</a></li>  <li class="file"><a href="/1night-cs/wiki/debian/NonMaintainerUpload/"></a></li>  <li class="file active"><a href="/1night-cs/wiki/debian/involve/">How can I help</a></li>  <li class="file"><a href="/1night-cs/wiki/debian/symbols/">symbols files</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -356,7 +356,7 @@
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/1night-cs/wiki/debian/involve/">
-            <time datetime="2020-01-25T03:05:21.676Z" itemprop="datePublished">2020-01-25</time>
+            <time datetime="2020-02-29T03:56:11.579Z" itemprop="datePublished">2020-02-29</time>
         </a>
     </div>
 
@@ -427,7 +427,7 @@
 <p>$ quilt edit foobar.c<br>File foobar.c added to patch fix-foobar.patch<br>The last step is tell quilt to generate the patch:</p>
 <p>$ quilt refresh<br>Refreshed patch fix-foobar.patch</p>
 <h6 id="2-2-3-Patch-Headers"><a href="#2-2-3-Patch-Headers" class="headerlink" title="2.2.3 Patch Headers"></a>2.2.3 Patch Headers</h6><p>We recommend that you tag every patch with <a href="http://dep.debian.net/deps/dep3/" rel="external nofollow noopener noreferrer" target="_blank">DEP-3</a> headers by putting them at the top of patch file. Here are some headers that you can use:</p>
-<p><strong>Description</strong>:    Description of what the patch does. It is formatted like Description field in debian/control: first line is short description, starting with lowercase letter, the next lines are long description, indented with a space.<br><strong>Author</strong>:    Who wrote the patch (i.e. “Jane Doe <a href="mailto:&#112;&#x61;&#99;&#x6b;&#x61;&#103;&#x65;&#114;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;" target="_blank" rel="noopener">&#112;&#x61;&#99;&#x6b;&#x61;&#103;&#x65;&#114;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;</a>”).<br><strong>Origin</strong>:    Where this patch comes from (i.e. “upstream”), when Author is not present.<br>Bug-Ubuntu:    A link to Launchpad bug, a short form is preferred (like <a href="https://bugs.launchpad.net/bugs/XXXXXXX" rel="external nofollow noopener noreferrer" target="_blank">https://bugs.launchpad.net/bugs/XXXXXXX</a>). If there are also bugs in upstream or Debian bugtrackers, add Bug or Bug-Debian headers.<br><strong>Forwarded</strong>:    Whether the patch was forwarded upstream. Either “yes”, “no” or “not-needed”.<br><strong>Last-Update</strong>:    Date of the last revision (in form “YYYY-MM-DD”).</p>
+<p><strong>Description</strong>:    Description of what the patch does. It is formatted like Description field in debian/control: first line is short description, starting with lowercase letter, the next lines are long description, indented with a space.<br><strong>Author</strong>:    Who wrote the patch (i.e. “Jane Doe <a href="mailto:&#112;&#x61;&#x63;&#x6b;&#x61;&#103;&#x65;&#x72;&#64;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#109;" target="_blank" rel="noopener">&#112;&#x61;&#x63;&#x6b;&#x61;&#103;&#x65;&#x72;&#64;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#109;</a>”).<br><strong>Origin</strong>:    Where this patch comes from (i.e. “upstream”), when Author is not present.<br>Bug-Ubuntu:    A link to Launchpad bug, a short form is preferred (like <a href="https://bugs.launchpad.net/bugs/XXXXXXX" rel="external nofollow noopener noreferrer" target="_blank">https://bugs.launchpad.net/bugs/XXXXXXX</a>). If there are also bugs in upstream or Debian bugtrackers, add Bug or Bug-Debian headers.<br><strong>Forwarded</strong>:    Whether the patch was forwarded upstream. Either “yes”, “no” or “not-needed”.<br><strong>Last-Update</strong>:    Date of the last revision (in form “YYYY-MM-DD”).</p>
 <h4 id="3-Test-your-changes"><a href="#3-Test-your-changes" class="headerlink" title="3. Test your changes"></a>3. Test your changes</h4><p>You should build your modified package with “debuild -us -uc”. You can easily install the resulting package with “debi”. Verify that everything works as expected. If not, continue your modifications until you’re satisfied with the result.</p>
 <h4 id="4-Generate-a-patch-and-mail-it"><a href="#4-Generate-a-patch-and-mail-it" class="headerlink" title="4. Generate a patch and mail it"></a>4. Generate a patch and mail it</h4><p>If you followed the instructions, you should have two .dsc files in the parent directory, like this:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd ..</span><br><span class="line">$ ls wordpress_*.dsc</span><br><span class="line">../wordpress_3.0.5+dfsg-1.1.dsc</span><br><span class="line">../wordpress_3.0.5+dfsg-1.dsc</span><br></pre></td></tr></table></figure>
@@ -462,9 +462,9 @@
         </a>
     
     
-        <a href="/1night-cs/wiki/debug/DebugginProcedures/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/1night-cs/wiki/debian/symbols/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Debugging Procedures</div>
+            <div class="article-nav-title">symbols files</div>
         </a>
     
 </nav>

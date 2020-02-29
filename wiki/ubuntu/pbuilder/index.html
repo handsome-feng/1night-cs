@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="One night in cs">
 <meta property="og:description" content="You must use sudo for pbuilder. Hence you must make an entry in the sudoers file: 1sudo visudo  and add the following entry (Not sure, encounter error in debian after add this):  1user_name ALL=(ALL)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-01-25T03:05:21.692Z">
+<meta property="og:updated_time" content="2020-02-29T03:56:11.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pbuilder">
 <meta name="twitter:description" content="You must use sudo for pbuilder. Hence you must make an entry in the sudoers file: 1sudo visudo  and add the following entry (Not sure, encounter error in debian after add this):  1user_name ALL=(ALL)">
@@ -193,7 +193,7 @@
                             &nbsp;
                             debian
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debian/DebianMaintainer/">Debian Maintainer</a></li>  <li class="file"><a href="/1night-cs/wiki/debian/NonMaintainerUpload/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian/involve/">How can I help</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debian/DebianMaintainer/">Debian Maintainer</a></li>  <li class="file"><a href="/1night-cs/wiki/debian/NonMaintainerUpload/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian/involve/">How can I help</a></li>  <li class="file"><a href="/1night-cs/wiki/debian/symbols/">symbols files</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -356,7 +356,7 @@
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/1night-cs/wiki/ubuntu/pbuilder/">
-            <time datetime="2020-01-25T03:05:21.692Z" itemprop="datePublished">2020-01-25</time>
+            <time datetime="2020-02-29T03:56:11.595Z" itemprop="datePublished">2020-02-29</time>
         </a>
     </div>
 
@@ -446,6 +446,8 @@
 <p> 最新版的 <strong>lintian</strong> 命令可以通过设置钩子脚本 <code>*/var/cache/pbuilder/hooks*/B90lintian</code> 在 <code>chroot</code> 环境中运行。脚本内容如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">set -e</span><br><span class="line">install_packages() &#123;</span><br><span class="line">        apt-get -y --allow-downgrades install &quot;$@&quot;</span><br><span class="line">        &#125;</span><br><span class="line">install_packages lintian</span><br><span class="line">echo &quot;+++ lintian output +++&quot;</span><br><span class="line">su -c &quot;lintian -i -I --show-overrides /tmp/buildd/*.changes&quot; - pbuilder</span><br><span class="line"># use this version if you don&apos;t want lintian to fail the buildsudo</span><br><span class="line">#su -c &quot;lintian -i -I --show-overrides /tmp/buildd/*.changes; :&quot; - pbuilder</span><br><span class="line">echo &quot;+++ end of lintian output +++&quot;</span><br></pre></td></tr></table></figure>
 
+<h3 id="For-multi-arch"><a href="#For-multi-arch" class="headerlink" title="For multi-arch"></a>For multi-arch</h3><p>pbuilder-dist jessie armhf create</p>
+<p>pbuilder-dist jessie armhf bb_1.3rc1-8.3.dsc</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://wiki.ubuntu.com/PbuilderHowto" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/PbuilderHowto</a></p>
 <p><a href="https://wiki.debian.org/PbuilderTricks" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.debian.org/PbuilderTricks</a></p>
 
