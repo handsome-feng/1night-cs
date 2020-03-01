@@ -61,19 +61,89 @@ root@savannah:/#
 
 Your  debian environment is at /media/forge/debian/pbuilder/build/26975. Any  file you copy there will be available to debian chroot. 
 
-You  may create ~/.pbuilderrc if you want set options for pbuilder, for  example if you want to keep pbuilder files in an external hard drive, 
+You  may create ~/.pbuilderrc if you want set options for pbuilder:
 
 ```
-BASETGZ=/media/forge/debian/pbuilder/sid-base.tgz
-BUILDPLACE=/media/forge/debian/pbuilder/build
-CCACHEDIR=/media/forge/debian/pbuilder/ccache
-BASEPATH=/media/forge/debian/pbuilder/base.cow
-COWBUILDER_BASE=/media/forge/debian/pbuilder/
-DISTRIBUTION=sid
-BUILDRESULT=/media/forge/debian/pbuilder/results
-APTCACHE=/media/forge/debian/pbuilder/aptcache
-DEBEMAIL="Your Name <email@yourprovide.domain>"
-#AUTOCLEANAPTCACHE=yes
+export DPKG_GENSYMBOLS_CHECK_LEVEL=4
+
+# Codenames for Debian suites according to their alias. Update these when
+# needed.
+UNSTABLE_CODENAME="sid"
+TESTING_CODENAME="bullseye"
+STABLE_CODENAME="buster"
+STABLE_BACKPORTS_SUITE="$STABLE_CODENAME-backports"
+
+# List of Debian suites.
+DEBIAN_SUITES=($UNSTABLE_CODENAME $TESTING_CODENAME $STABLE_CODENAME
+    "unstable" "testing" "stable")
+
+# List of Ubuntu suites. Update these when needed.
+UBUNTU_SUITES=("focal" "bionic" "xenial")
+
+# Mirrors to use. Update these to your preferred mirror.
+DEBIAN_MIRROR="ftp.cn.debian.org"
+UBUNTU_MIRROR="ftp.ubuntu.com"
+
+# Optionally use the changelog of a package to determine the suite to use if
+# none set.
+if [ -z "${DIST}" ] && [ -r "debian/changelog" ]; then
+    DIST=$(dpkg-parsechangelog | awk '/^Distribution: / {print $2}')
+    DIST="${DIST%%-*}"
+    # Use the unstable suite for certain suite values.
+    if $(echo "experimental UNRELEASED" | grep -q $DIST); then
+        DIST="$UNSTABLE_CODENAME"
+    fi
+fi
+
+# Optionally set a default distribution if none is used. Note that you can set
+# your own default (i.e. ${DIST:="unstable"}).
+: ${DIST:="$(lsb_release --short --codename)"}
+
+# Optionally change Debian release states in $DIST to their names.
+case "$DIST" in
+    unstable)
+        DIST="$UNSTABLE_CODENAME"
+        ;;
+    testing)
+        DIST="$TESTING_CODENAME"
+        ;;
+    stable)
+        DIST="$STABLE_CODENAME"
+        ;;
+esac
+
+# Optionally set the architecture to the host architecture if none set. Note
+# that you can set your own default (i.e. ${ARCH:="i386"}).
+: ${ARCH:="$(dpkg --print-architecture)"}
+
+NAME="$DIST"
+if [ -n "${ARCH}" ]; then
+    NAME="$NAME-$ARCH"
+    DEBOOTSTRAPOPTS=("--arch" "$ARCH" "${DEBOOTSTRAPOPTS[@]}")
+fi
+BASETGZ="/var/cache/pbuilder/$NAME-base.tgz"
+# Optionally, set BASEPATH (and not BASETGZ) if using cowbuilder
+# BASEPATH="/var/cache/pbuilder/$NAME/base.cow/"
+DISTRIBUTION="$DIST"
+BUILDRESULT="/var/cache/pbuilder/$NAME/result/"
+APTCACHE="/var/cache/pbuilder/$NAME/aptcache/"
+BUILDPLACE="/var/cache/pbuilder/build/"
+
+if $(echo ${DEBIAN_SUITES[@]} | grep -q $DIST); then
+    # Debian configuration
+    MIRRORSITE="http://$DEBIAN_MIRROR/debian/"
+    COMPONENTS="main contrib non-free"
+    DEBOOTSTRAPOPTS=("${DEBOOTSTRAPOPTS[@]}" "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg")
+
+elif $(echo ${UBUNTU_SUITES[@]} | grep -q $DIST); then
+    # Ubuntu configuration
+    MIRRORSITE="http://$UBUNTU_MIRROR/ubuntu/"
+    COMPONENTS="main restricted universe multiverse"
+    DEBOOTSTRAPOPTS=("${DEBOOTSTRAPOPTS[@]}" "--keyring=/usr/share/keyrings/ubuntu-archive-keyring.gpg")
+else
+    echo "Unknown distribution: $DIST"
+    exit 1
+fi
 ```
 
  
@@ -151,9 +221,34 @@ echo "+++ end of lintian output +++"
 
 ### For multi-arch
 
-pbuilder-dist jessie armhf create
+If use pbuilder-dist:
 
-pbuilder-dist jessie armhf bb_1.3rc1-8.3.dsc
+```shell
+pbuilder-dist unstable armhf create
+pbuilder-dist unstable armhf bb_1.3rc1-8.3.dsc
+```
+
+Manually doing what pbuilder-dist can do:
+
+```shell
+#Create a base environment for Debian sid
+sudo DIST=sid pbuilder create
+
+#Create a base environment for Ubuntu eoan under the i386 architecture
+sudo DIST=eoan ARCH=i386 pbuilder create
+
+#Create a base environment for Ubuntu eoan
+sudo DIST=eoan pbuilder create
+
+#Update a base environment for Ubuntu eoan
+sudo DIST=eoan pbuilder update
+
+#Build a package using Ubuntu eoan as the base environment
+DIST=eoan pdebuild
+
+#Build a package using Ubuntu eoan as the base environment under the i386 architecture
+DIST=eoan ARCH=i386 pdebuild
+```
 
 
 
