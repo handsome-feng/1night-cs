@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>手动定制优麒麟镜像 | One night in cs</title>
+    
+    
+        <meta name="keywords" content="手动定制优麒麟镜像">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="手动集成版本流程如下： 点击基础iso镜像，右键挂载镜像:   sudo mount xxx.iso /mnt/uk64  创建一个image-iso目录，拷贝挂载镜像的所有文件到image-iso目录（注意隐藏文件不要漏掉了）   cd /image-iso   rsync -a /mnt/uk64 .  将image-iso/casper/filesystem.squashfs 移动到工作目录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手动定制优麒麟镜像">
+<meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/debian&ubuntu/custom-iso/index.html">
+<meta property="og:site_name" content="One night in cs">
+<meta property="og:description" content="手动集成版本流程如下： 点击基础iso镜像，右键挂载镜像:   sudo mount xxx.iso /mnt/uk64  创建一个image-iso目录，拷贝挂载镜像的所有文件到image-iso目录（注意隐藏文件不要漏掉了）   cd /image-iso   rsync -a /mnt/uk64 .  将image-iso/casper/filesystem.squashfs 移动到工作目录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-03-01T16:20:48.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手动定制优麒麟镜像">
+<meta name="twitter:description" content="手动集成版本流程如下： 点击基础iso镜像，右键挂载镜像:   sudo mount xxx.iso /mnt/uk64  创建一个image-iso目录，拷贝挂载镜像的所有文件到image-iso目录（注意隐藏文件不要漏掉了）   cd /image-iso   rsync -a /mnt/uk64 .  将image-iso/casper/filesystem.squashfs 移动到工作目录">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="One night in cs" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/1night-cs/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/1night-cs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/1night-cs/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/1night-cs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/1night-cs/css/style.css">
+    <script src="/1night-cs/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/1night-cs/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/1night-cs/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">One night in cs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/1night-cs/">首页</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/1night-cs/',
+        CONTENT_URL: '/1night-cs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/1night-cs/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            AI
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/AI/machine-learning/">machine-learning</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            algorithm
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            链表
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/algorithm/链表/单链表逆置/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/algorithm/动态规划/"></a></li>  <li class="file"><a href="/1night-cs/wiki/algorithm/algorithm/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            debian&ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Theme/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/常见流程/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/DebianMaintainer/">Debian Maintainer</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Debuild/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/NonMaintainerUpload/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/SRU/">SRU</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/UK-NO1/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/UbuntuMember/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Untitled/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/comman-procedure/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/command/">common command</a></li>  <li class="file active"><a href="/1night-cs/wiki/debian&ubuntu/custom-iso/">手动定制优麒麟镜像</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/debian-ubuntu/">Ubuntu</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/grub/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/i18n-l10n/">i18n/l10n</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/involve/">How can I help</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/packaging/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/pbuilder/">Pbuilder</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/seed/">seed</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/symbols/">symbols files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            debug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debug/DebugginProcedures/">Debugging Procedures</a></li>  <li class="file"><a href="/1night-cs/wiki/debug/Doxygen/">Doxygen + graphviz</a></li>  <li class="file"><a href="/1night-cs/wiki/debug/gdb/">Gdb</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            design-pattern
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/design-pattern/design-pattern/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            device
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/device/网卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/device/keyboard/">keyboard</a></li>  <li class="file"><a href="/1night-cs/wiki/device/显卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/device/触摸板/">touchpad</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            language
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/language/cpp_styleguide/"></a></li>  <li class="file"><a href="/1night-cs/wiki/language/python/"></a></li>  <li class="file"><a href="/1night-cs/wiki/language/shell/">Shell</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/linux/dbus/">DBus</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/initrd/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kernel/">Kernel</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kvm/">kvm</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/lightdm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/network/">Network</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/sharedlibs/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/snap/">Snap</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            others
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/regex/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/x2x/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xdotool/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xwd/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/index/"></a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-debian&amp;ubuntu/custom-iso" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/1night-cs/categories/debian-ubuntu/">debian&ubuntu</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/1night-cs/wiki/debian&ubuntu/custom-iso/">
+            <time datetime="2020-03-01T16:20:48.236Z" itemprop="datePublished">2020-03-02</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/handsome-feng/1night-cs/raw/master/source/_posts/debian&amp;ubuntu/custom-iso.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/handsome-feng/1night-cs/edit/master/source/_posts/debian&amp;ubuntu/custom-iso.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/handsome-feng/1night-cs/commits/master/source/_posts/debian&amp;ubuntu/custom-iso.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            手动定制优麒麟镜像
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="手动集成版本流程如下："><a href="#手动集成版本流程如下：" class="headerlink" title="手动集成版本流程如下："></a>手动集成版本流程如下：</h2><ol>
+<li><p>点击基础iso镜像，右键挂载镜像:</p>
+<p>  <code>sudo mount xxx.iso /mnt/uk64</code></p>
+</li>
+<li><p>创建一个image-iso目录，拷贝挂载镜像的所有文件到image-iso目录（注意隐藏文件不要漏掉了）</p>
+<p>  <code>cd /image-iso</code></p>
+<p>  <code>rsync -a /mnt/uk64 .</code></p>
+</li>
+<li><p>将image-iso/casper/filesystem.squashfs 移动到工作目录下:</p>
+<p>  <code>sudo mv uk64/casper/filesystem.squashfs .</code></p>
+</li>
+<li><p>解压缩文件，生成squashfs-root目录</p>
+<p>  <code>sudo unsquashfs filesystem.squashfs</code></p>
+</li>
+<li><p>chroot进入squashfs-root目录，命令：</p>
+<p>  <code>sudo chroot squashfs-root</code></p>
+</li>
+<li><p>进入chroot后第一个操作为mount：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mount -t proc proc /proc</span><br><span class="line">mount -t sysfs sysfs /sys</span><br><span class="line">mount -t devtmpfs devtmpfs /dev</span><br><span class="line">mount -t devpts devpts /dev/pts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置chroot环境中的网络、apt源等（配置网络修改/etc/resolv.conf，修改源更改/etc/apt/sources.list文件,添加multiverse)</p>
+<p>  <code>vim.tiny /etc/resolv.conf: nameserver 114.114.114.114</code></p>
+</li>
+<li><p>chroot环境中安装包、删除包、修改配置文件等</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository ppa:feng-kylin/1810aid</span><br><span class="line">apt-get install foxitreader flashplugin-installer libgconf-2-4</span><br><span class="line">apt purge apport apport-gtk apport-symptoms python-apport gnome-software gnome-software-common ubuntu-software libreoffice-* mate-polkit kylin-greeter</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>windows字体 添加可执行权限和可读权限<br>sudo cp -r huawen_font /usr/share/fonts<br>chmod +rx -R huawen_font</p>
+</li>
+<li><p>更新字体缓存，执行命令</p>
+<p><code>fc-cache -v -f</code></p>
+</li>
+<li><p>还原定制版本中修改的配置文件及清除缓存，如/etc/resolv.conf文件，/var/cache/apt/archives目录下的deb包，/var/lib/apt/lists目录下的apt更新list文件等</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository -r ppa:feng-kylin/1810aid</span><br><span class="line">rm /etc/apt/sources.list.d/feng-kylin-*</span><br><span class="line">rm /var/lib/apt/lists/ppa.launchpad.net_feng-kylin_1810aid_ubuntu_dists_cosmic_*</span><br><span class="line">apt-get clean</span><br><span class="line">rm /var/lib/apt/periodic/update-success-stamp</span><br><span class="line">vim.tiny /etc/resolv.conf</span><br><span class="line">vim.tiny /etc/apt/sources.list</span><br><span class="line">history -c</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>退出chroot前最后一个操作：</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">umount -l /sys</span><br><span class="line">umount -l /dev/pts</span><br><span class="line">umount -l /dev</span><br><span class="line">umount -l /proc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出chroot环境:</p>
+<p>  <code>exit</code></p>
+</li>
+<li><p>删除旧的filesystem.squashfs，创建新的filesystem.squashfs，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm filesystem.squashfs</span><br><span class="line">sudo mksquashfs squashfs-root/ filesystem.squashfs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新filesystem.squashfs.size</p>
+<p> <code>sudo du -sx --block-size=1 squashfs-root | cut -f1 &gt; filesystem.size</code></p>
+</li>
+<li><p>删除squashfs-root目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r squashfs-root/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将filesytem.squashfs 和filesystem.size移动到casper目录，并修改新filesystem.squashfs文件属主和权限，跟其余文件一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mv filesystem.squashfs filesystem.size uk64/casper</span><br><span class="line">cd uk64/casper</span><br><span class="line">sudo chmod 444 filesystem.squashfs filesystem.size</span><br><span class="line">sudo chown feng:feng filesystem.squashfs filesystem.size</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定制ubiquity安装过程（可选）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim uk64/preseed/cli.seed</span><br><span class="line">sudo vim boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改bootlogo（可选）:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mv uk64/isolinux/bootlogo .</span><br><span class="line">mkdir bootlogo-tmp &amp;&amp; cd bootlogo-tmp</span><br><span class="line">cpio -i &lt; ../bootlogo</span><br><span class="line">sudo vim txt.cfg lang langlist</span><br><span class="line">ls -1 | cpio --quiet -o &gt; ./bootlogo</span><br><span class="line">sudo cp * ../uk64/isolinux</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入到image-iso目录，更新md5值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo rm md5sum.txt</span><br><span class="line">find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt</span><br><span class="line">sudo chown feng:feng md5sum.txt</span><br><span class="line">sudo chmod -w md5sum.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入到uk64目录，压缩镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1 -V Ubuntu-Kylin\ 19.04 -o ubuntukylin-19.04-amd64.iso -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus uk64/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>32位：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1 -V Ubuntu-Kylin\ 18.04.2 -o ubuntukylin-18.04.2-enhanced-i386.iso -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -partition_offset 16 -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table uk32/</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>pressed配置：</p>
+<p>   <a href="https://help.ubuntu.com/lts/installation-guide/s390x/apbs04.html#preseed-l10n" rel="external nofollow noopener noreferrer" target="_blank">https://help.ubuntu.com/lts/installation-guide/s390x/apbs04.html#preseed-l10n</a></p>
+<p>   <a href="https://wiki.ubuntu.com/UbiquityAutomation" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.ubuntu.com/UbiquityAutomation</a></p>
+<p>   <a href="https://help.ubuntu.com/community/InstallCDCustomization" rel="external nofollow noopener noreferrer" target="_blank">https://help.ubuntu.com/community/InstallCDCustomization</a></p>
+</li>
+<li><p>修改/etc/sudoers,使得sudo不需要密码：</p>
+<p>kylin (ALL: ALL) NOPASSWD: ALL</p>
+<p>%sudo (ALL: ALL) NOPASSWD: ALL</p>
+</li>
+<li><p>解开initrd:</p>
+<p>unmkinitramfs initrd</p>
+</li>
+</ul>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/1night-cs/wiki/debian&ubuntu/command/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    common command
+                
+            </div>
+        </a>
+    
+    
+        <a href="/1night-cs/wiki/debian&ubuntu/debian-ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Ubuntu</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            handsome_feng &copy; 2020 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/1night-cs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/1night-cs/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/1night-cs/js/main.js"></script>
+
+    </div>
+</body>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>common command | One night in cs</title>
+    
+    
+        <meta name="keywords" content="common command">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="查找find使用格式如下： $ find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt; 　　- &amp;lt;指定目录&amp;gt;： 所要搜索的目录及其所有子目录。默认为当前目录。 　　- &amp;lt;指定条件&amp;gt;： 所要搜索的文件的特征。 　　- &amp;lt;指定动作&amp;gt;： 对搜索结果进行特定的处理。 使用实例： 　　$ find . -name ‘test*’ 搜索当前目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="common command">
+<meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/debian&ubuntu/command/index.html">
+<meta property="og:site_name" content="One night in cs">
+<meta property="og:description" content="查找find使用格式如下： $ find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt; 　　- &amp;lt;指定目录&amp;gt;： 所要搜索的目录及其所有子目录。默认为当前目录。 　　- &amp;lt;指定条件&amp;gt;： 所要搜索的文件的特征。 　　- &amp;lt;指定动作&amp;gt;： 对搜索结果进行特定的处理。 使用实例： 　　$ find . -name ‘test*’ 搜索当前目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-03-01T16:20:48.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="common command">
+<meta name="twitter:description" content="查找find使用格式如下： $ find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt; 　　- &amp;lt;指定目录&amp;gt;： 所要搜索的目录及其所有子目录。默认为当前目录。 　　- &amp;lt;指定条件&amp;gt;： 所要搜索的文件的特征。 　　- &amp;lt;指定动作&amp;gt;： 对搜索结果进行特定的处理。 使用实例： 　　$ find . -name ‘test*’ 搜索当前目">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="One night in cs" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/1night-cs/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/1night-cs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/1night-cs/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/1night-cs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/1night-cs/css/style.css">
+    <script src="/1night-cs/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/1night-cs/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/1night-cs/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">One night in cs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/1night-cs/">首页</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/1night-cs/',
+        CONTENT_URL: '/1night-cs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/1night-cs/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            AI
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/AI/machine-learning/">machine-learning</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            algorithm
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            链表
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/algorithm/链表/单链表逆置/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/algorithm/动态规划/"></a></li>  <li class="file"><a href="/1night-cs/wiki/algorithm/algorithm/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            debian&ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Theme/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/常见流程/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/DebianMaintainer/">Debian Maintainer</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Debuild/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/NonMaintainerUpload/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/SRU/">SRU</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/UK-NO1/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/UbuntuMember/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Untitled/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/comman-procedure/"></a></li>  <li class="file active"><a href="/1night-cs/wiki/debian&ubuntu/command/">common command</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/custom-iso/">手动定制优麒麟镜像</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/debian-ubuntu/">Ubuntu</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/grub/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/i18n-l10n/">i18n/l10n</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/involve/">How can I help</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/packaging/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/pbuilder/">Pbuilder</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/seed/">seed</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/symbols/">symbols files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            debug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debug/DebugginProcedures/">Debugging Procedures</a></li>  <li class="file"><a href="/1night-cs/wiki/debug/Doxygen/">Doxygen + graphviz</a></li>  <li class="file"><a href="/1night-cs/wiki/debug/gdb/">Gdb</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            design-pattern
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/design-pattern/design-pattern/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            device
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/device/网卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/device/keyboard/">keyboard</a></li>  <li class="file"><a href="/1night-cs/wiki/device/显卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/device/触摸板/">touchpad</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            language
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/language/cpp_styleguide/"></a></li>  <li class="file"><a href="/1night-cs/wiki/language/python/"></a></li>  <li class="file"><a href="/1night-cs/wiki/language/shell/">Shell</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/linux/dbus/">DBus</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/initrd/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kernel/">Kernel</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kvm/">kvm</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/lightdm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/network/">Network</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/sharedlibs/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/snap/">Snap</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            others
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/regex/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/x2x/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xdotool/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xwd/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/index/"></a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-debian&amp;ubuntu/command" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/1night-cs/categories/debian-ubuntu/">debian&ubuntu</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/1night-cs/wiki/debian&ubuntu/command/">
+            <time datetime="2020-03-01T16:20:48.236Z" itemprop="datePublished">2020-03-02</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/handsome-feng/1night-cs/raw/master/source/_posts/debian&amp;ubuntu/command.md" rel="external nofollow noopener noreferrer" target="_blank"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/handsome-feng/1night-cs/edit/master/source/_posts/debian&amp;ubuntu/command.md" rel="external nofollow noopener noreferrer" target="_blank"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/handsome-feng/1night-cs/commits/master/source/_posts/debian&amp;ubuntu/command.md" rel="external nofollow noopener noreferrer" target="_blank"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            common command
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>使用格式如下：</p>
+<p>$ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;</p>
+<p>　　- &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。</p>
+<p>　　- &lt;指定条件&gt;： 所要搜索的文件的特征。</p>
+<p>　　- &lt;指定动作&gt;： 对搜索结果进行特定的处理。</p>
+<p>使用实例：</p>
+<p>　　$ find . -name ‘test*’</p>
+<p>搜索当前目录（含子目录，以下同）中，所有文件名以test开头的文件。</p>
+<p>　　$ find . -name ‘test*’ -ls</p>
+<p>搜索当前目录中，所有文件名以test开头的文件，并显示它们的详细信息。</p>
+<p>　　$ find . -type f -mmin -10</p>
+<p>搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件+特殊文件+目录。</p>
+<h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><p>它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含有本地所有文件信息。Linux系统自动创建这个数据库，并且每天自动更新一次，所以使用locate命令查不到最新变动过的文件。为了避免这种情况，可以在使用locate之前，先使用updatedb命令，手动更新数据库。</p>
+<p>locate命令的使用实例：</p>
+<p>　　$ locate /etc/sh</p>
+<p>搜索etc目录下所有以sh开头的文件。</p>
+<p>　　$ locate ~/m</p>
+<p>搜索用户主目录下，所有以m开头的文件。</p>
+<p>　　$ locate -i ~/m</p>
+<p>搜索用户主目录下，所有以m开头的文件，并且忽略大小写。</p>
+<h3 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h3><p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p>
+<p>whereis命令的使用实例：</p>
+<p>　　$ whereis grep</p>
+<h3 id="which"><a href="#which" class="headerlink" title="which"></a>which</h3><p>which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<p>which命令的使用实例：</p>
+<p>　　$ which grep</p>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>type命令其实不能算查找命令，它是用来区分某个命令到底是由shell自带的，还是由shell外部的独立二进制文件提供的。如果一个命令是外部命令，那么使用-p参数，会显示该命令的路径，相当于which命令。</p>
+<p>type命令的使用实例：</p>
+<p>　　$ type cd</p>
+<p>系统会提示，cd是shell的自带命令（build-in）。</p>
+<p>　　$ type grep</p>
+<p>系统会提示，grep是一个外部命令，并显示该命令的路径。</p>
+<p>　　$ type -p grep</p>
+<p>加上-p参数后，就相当于which命令。</p>
+<h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><h4 id="dpkg"><a href="#dpkg" class="headerlink" title="dpkg"></a>dpkg</h4><p>dpkg -x</p>
+<p>dpkg -e</p>
+<p>dpkg-deb -b</p>
+<h3 id="设备信息"><a href="#设备信息" class="headerlink" title="设备信息"></a>设备信息</h3><p>sudo /sbin/hdparm -i /dev/sda | grep -i serialno #硬盘序列号</p>
+<h3 id="X相关"><a href="#X相关" class="headerlink" title="X相关"></a>X相关</h3><h4 id="xwininfo"><a href="#xwininfo" class="headerlink" title="xwininfo"></a>xwininfo</h4><h4 id="xprop"><a href="#xprop" class="headerlink" title="xprop"></a>xprop</h4><h4 id="xkill"><a href="#xkill" class="headerlink" title="xkill"></a>xkill</h4><h4 id="xdotool"><a href="#xdotool" class="headerlink" title="xdotool"></a>xdotool</h4><p>用户管理：</p>
+<p>adduser feng</p>
+<p>usermod -aG sudo feng</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/1night-cs/wiki/debian&ubuntu/comman-procedure/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/1night-cs/wiki/debian&ubuntu/custom-iso/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">手动定制优麒麟镜像</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            handsome_feng &copy; 2020 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/1night-cs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/1night-cs/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/1night-cs/js/main.js"></script>
+
+    </div>
+</body>
