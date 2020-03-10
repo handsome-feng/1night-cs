@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>One night in cs</title>
+    
+    
+        <meta name="keywords" content="One night in cs">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Session Manager  会话管理器是什么，什么作用  KDE/GNOME/Deepin  ukui-session-manager优势与劣势   传统的 Linux 系统使用 ConsoleKit 跟踪用户登录情况，并决定是否赋予其关机的权限。现在 ConsoleKit 已经被 systemd 的 logind 所替代。 logind 不是 pid-1 的 init 进程。它的作用和 U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="One night in cs">
+<meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/linux/sessionManager/index.html">
+<meta property="og:site_name" content="One night in cs">
+<meta property="og:description" content="Session Manager  会话管理器是什么，什么作用  KDE/GNOME/Deepin  ukui-session-manager优势与劣势   传统的 Linux 系统使用 ConsoleKit 跟踪用户登录情况，并决定是否赋予其关机的权限。现在 ConsoleKit 已经被 systemd 的 logind 所替代。 logind 不是 pid-1 的 init 进程。它的作用和 U">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2020-03-10T06:43:59.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="One night in cs">
+<meta name="twitter:description" content="Session Manager  会话管理器是什么，什么作用  KDE/GNOME/Deepin  ukui-session-manager优势与劣势   传统的 Linux 系统使用 ConsoleKit 跟踪用户登录情况，并决定是否赋予其关机的权限。现在 ConsoleKit 已经被 systemd 的 logind 所替代。 logind 不是 pid-1 的 init 进程。它的作用和 U">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="One night in cs" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/1night-cs/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/1night-cs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/1night-cs/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/1night-cs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/1night-cs/css/style.css">
+    <script src="/1night-cs/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/1night-cs/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/1night-cs/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/1night-cs/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">One night in cs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/1night-cs/">首页</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/1night-cs/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/1night-cs/',
+        CONTENT_URL: '/1night-cs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/1night-cs/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/1night-cs/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            AI
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/AI/machine-learning/">machine-learning</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            algorithm
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            链表
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/algorithm/链表/单链表逆置/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/algorithm/动态规划/"></a></li>  <li class="file"><a href="/1night-cs/wiki/algorithm/algorithm/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            debian&ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Theme/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/UpstreamGuide/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/DebianMaintainer/">Debian Maintainer</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/Debuild/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/NonMaintainerUpload/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/SRU/">SRU</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/SimplePackaging/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/UK-NO1/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/UbuntuMember/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/comman-procedure/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/command/">common command</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/custom-iso/">手动定制优麒麟镜像</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/debian-ubuntu/">Ubuntu</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/grub/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/i18n-l10n/">i18n/l10n</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/involve/">How can I help</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/license/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/packaging/"></a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/pbuilder/">Pbuilder</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/seed/">seed</a></li>  <li class="file"><a href="/1night-cs/wiki/debian&ubuntu/symbols/">symbols files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            debug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/debug/DebugginProcedures/">Debugging Procedures</a></li>  <li class="file"><a href="/1night-cs/wiki/debug/Doxygen/">Doxygen + graphviz</a></li>  <li class="file"><a href="/1night-cs/wiki/debug/dbgsym/">Debug Symbol Pakcages</a></li>  <li class="file"><a href="/1night-cs/wiki/debug/gdb/">Gdb</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            design-pattern
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/design-pattern/design-pattern/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            device
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/device/网卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/device/keyboard/">keyboard</a></li>  <li class="file"><a href="/1night-cs/wiki/device/显卡/"></a></li>  <li class="file"><a href="/1night-cs/wiki/device/触摸板/">touchpad</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            language
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/language/qt/"></a></li>  <li class="file"><a href="/1night-cs/wiki/language/cpp_styleguide/"></a></li>  <li class="file"><a href="/1night-cs/wiki/language/python/"></a></li>  <li class="file"><a href="/1night-cs/wiki/language/shell/">Shell</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/linux/dbus/">DBus</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/initrd/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kernel/">Kernel</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kvm/">kvm</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/lightdm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/network/">Network</a></li>  <li class="file active"><a href="/1night-cs/wiki/linux/sessionManager/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/sharedlibs/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/snap/">Snap</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            others
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            tools
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/irssi/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/regex/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/x2x/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xdotool/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xwd/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1night-cs/wiki/index/"></a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-linux/sessionManager" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>Session Manager</p>
+<ol>
+<li><p>会话管理器是什么，什么作用</p>
+</li>
+<li><p>KDE/GNOME/Deepin</p>
+</li>
+<li><p>ukui-session-manager优势与劣势</p>
+</li>
+</ol>
+<p>传统的 Linux 系统使用 ConsoleKit 跟踪用户登录情况，并决定是否赋予其关机的权限。现在 ConsoleKit 已经被 systemd 的 logind 所替代。</p>
+<p>logind 不是 pid-1 的 init 进程。它的作用和 UpStart 的 session init 类似，但功能要丰富很多，它能够管理几乎所有用户会话(session)相关的事情。logind 不仅是 ConsoleKit 的替代，它可以：</p>
+<ul>
+<li>维护，跟踪会话和用户登录情况。如上所述，为了决定关机命令是否可行，系统需要了解当前用户登录情况，如果用户从 SSH 登录，不允许其执行关机命令；如果普通用户从本地登录，且该用户是系统中的唯一会话，则允许其执行关机命令；这些判断都需要 logind 维护所有的用户会话和登录情况。</li>
+<li>Logind 也负责统计用户会话是否长时间没有操作，可以执行休眠/关机等相应操作。<br>为用户会话的所有进程创建 CGroup。这不仅方便统计所有用户会话的相关进程，也可以实现会话级别的系统资源控制。</li>
+<li>负责电源管理的组合键处理，比如用户按下电源键，将系统切换至睡眠状态。</li>
+<li>多席位(multi-seat) 管理。如今的电脑，即便一台笔记本电脑，也完全可以提供多人同时使用的计算能力。多席位就是一台电脑主机管理多个外设，比如两个屏幕和两个鼠标/键盘。席位一使用屏幕 1 和键盘 1；席位二使用屏幕 2 和键盘 2，但他们都共享一台主机。用户会话可以自由在多个席位之间切换。或者当插入新的键盘，屏幕等物理外设时，自动启动 gdm 用户登录界面等。所有这些都是多席位管理的内容。ConsoleKit 始终没有实现这个功能，systemd 的 logind 能够支持多席位。</li>
+</ul>
+<p>好的一点是，这非常有助于标准化 Linux 的管理！从前，不同的 Linux 发行版各行其事，使用不同方法管理系统，从来也不会互相妥协。比如如何将系统进入休眠状态，不同的系统有不同的解决方案，即便是同一个 Linux 系统，也存在不同的方法，比如一个有趣的讨论：如何让 ubuntu 系统休眠，可以使用底层的/sys/power/state 接口，也可以使用诸如 pm-utility 等高层接口。存在这么多种不同的方法做一件事情对像我这样的普通用户而言可不是件有趣的事情。systemd 提供统一的电源管理命令接口，这件事情的意义就类似全世界的人都说统一的语言，我们再也不需要学习外语了，多么美好！</p>
+<p>X Session Management Protocol</p>
+<p>The purpose of the X Session Management Protocol (XSMP) is to provide a uniform mechanism for users to save and restore their sessions. </p>
+<p>A session is a group of clients, each of which has a particular state. </p>
+<h3 id="Mate-Session-Manager"><a href="#Mate-Session-Manager" class="headerlink" title="Mate Session Manager"></a>Mate Session Manager</h3><p>require_dbus_session</p>
+<p>gsm_util_export_activation_environment</p>
+<p>gsm_util_export_user_environment</p>
+<p>check_gl</p>
+<p>XDG_CURRENT_DESKTOP=MATE</p>
+<p>DISPLAY=gdk_display_get_name</p>
+<p>MATE_DESKTOP_SESSION_ID=this-is-deprecated</p>
+<p>initialize_gsettings</p>
+<p>accessibility: GTK_MODULES=gail:atk-bridge</p>
+<p>gsm_store_new</p>
+<p>gsm_xsmp_server_new</p>
+<p>acquire_name</p>
+<p>msm_gnome_start() //gnome compat mode: keyring, smproxy</p>
+<p>set_overlay_scroll</p>
+<p>gsm_manager_new</p>
+<p>mdm_signal_hander_new</p>
+<p>load_standard_apps(初始化为autostart_app, add进client_store)</p>
+<p>​    maybe_load_saved_session_apps</p>
+<p>​    gsm_manager_add_autostart_apps_from_dir</p>
+<p>​    append_default_app: ukui-settings-daemon</p>
+<p>​    append_required_apps: dock, filemanager, panel, windowmanager</p>
+<p>​    append_accessibility_apps: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">typedef enum &#123;</span><br><span class="line">    /* gsm&apos;s own startup/initialization phase */</span><br><span class="line">    GSM_MANAGER_PHASE_STARTUP = 0,</span><br><span class="line"></span><br><span class="line">    /* xrandr setup, mate-settings-daemon, etc */</span><br><span class="line">    GSM_MANAGER_PHASE_INITIALIZATION,</span><br><span class="line"></span><br><span class="line">    /* window/compositing managers */</span><br><span class="line">    GSM_MANAGER_PHASE_WINDOW_MANAGER,</span><br><span class="line"></span><br><span class="line">    /* apps that will create _NET_WM_WINDOW_TYPE_PANEL windows */</span><br><span class="line">    GSM_MANAGER_PHASE_PANEL,</span><br><span class="line"></span><br><span class="line">    /* apps that will create _NET_WM_WINDOW_TYPE_DESKTOP windows */</span><br><span class="line">    GSM_MANAGER_PHASE_DESKTOP,</span><br><span class="line"></span><br><span class="line">    /* everything else */</span><br><span class="line">    GSM_MANAGER_PHASE_APPLICATION,</span><br><span class="line"></span><br><span class="line">    /* done launching */</span><br><span class="line">    GSM_MANAGER_PHASE_RUNNING,</span><br><span class="line"></span><br><span class="line">    /* shutting down */</span><br><span class="line">    GSM_MANAGER_PHASE_QUERY_END_SESSION,</span><br><span class="line">    GSM_MANAGER_PHASE_END_SESSION,</span><br><span class="line">    GSM_MANAGER_PHASE_EXIT</span><br><span class="line">&#125; GsmManagerPhase;</span><br></pre></td></tr></table></figure>
+
+<h3 id="KDE-ksmserver"><a href="#KDE-ksmserver" class="headerlink" title="KDE ksmserver"></a>KDE ksmserver</h3><ul>
+<li><p>sanity_check(he(合理性检验)</p>
+<p>HOME, ICEAUTHORITY, KDETMP/ice-unix(socket directory where X-windows session information is saved)</p>
+</li>
+<li><p>SESSION_MANAGER=</p>
+</li>
+<li><p>checkComposite()</p>
+</li>
+<li><p>QT_QPA_PLATFORM=xcb when launchpad ksmserver self</p>
+</li>
+<li><p>fcntl(ConnectionNumber(QX11Info::display()), F_SETFD, 1);</p>
+</li>
+<li><p>check_library_exists(ICE _IceTransNoListen “” HAVE__ICETRANSNOLISTEN)</p>
+</li>
+<li><p>setupShortcuts</p>
+</li>
+</ul>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/1night-cs/wiki/linux/network/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Network
+                
+            </div>
+        </a>
+    
+    
+        <a href="/1night-cs/wiki/linux/sharedlibs/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            handsome_feng &copy; 2020 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" rel="external nofollow noopener noreferrer" target="_blank">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/1night-cs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/1night-cs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/1night-cs/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/1night-cs/js/main.js"></script>
+
+    </div>
+</body>
