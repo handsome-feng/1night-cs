@@ -24,3 +24,9 @@ ${shlibs:Depends}
 ### The shlibs system
 
 https://www.debian.org/doc/debian-policy/ch-sharedlibs.html
+
+A shared library is identified by the `SONAME` attribute stored in its dynamic section.
+
+When a binary is linked against a shared library, the `SONAME` of the shared library is recorded in the binary’s `NEEDED` section so that the dynamic linker knows that library must be loaded at runtime. 
+
+The shared library file’s full name (which usually contains additional version information not needed in the `SONAME`) is therefore normally not referenced directly. Instead, the shared library is loaded by its `SONAME`, which exists on the file system as a symlink pointing to the full name of the shared library. 

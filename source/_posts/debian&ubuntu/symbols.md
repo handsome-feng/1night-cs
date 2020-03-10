@@ -41,3 +41,7 @@ You can get the symbols for different archs including those from www.ports.debia
 getbuildlog peony last
 
 pkgkde-symbolshelper batchpatch -v 1.8 foo_1.8-1*.build
+
+
+
+reference: https://qt-kde-team.pages.debian.net/symbolfiles.html

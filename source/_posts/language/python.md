@@ -52,3 +52,22 @@ epoll:
 ### 闭包
 
 ### 协程
+
+#### windows下将python文件转为可执行文件：
+
+pip install pyinstaller
+
+pyinstaller -F foo.py
+
+
+
+#### 鼠键模拟: PyUserInput
+
+
+
+#### 浏览器调试： selenium
+
+
+
+#### 浏览器UA: fake_useragent
+
