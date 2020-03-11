@@ -1,5 +1,5 @@
 ---
-title: seed
+title: seeds
 ---
 
 
@@ -14,7 +14,7 @@ mv ubuntukylin ubuntukylin.disco
 
 mv platform platform.disco
 
-germinate -S file:///home/feng/seeds/ -s ubuntukylin.disco -d disco -a amd64 -c main,restricted,universe,multiverse
+germinate -S file:///home/feng/seeds/ -s ubuntukylin.disco -d disco -a amd64 -c main,restricted,universe,multiverse -m http://mirrors.aliyun.com/ubuntu/
 
 最后查看desktop文件，为桌面版本iso的包列表
 
@@ -41,3 +41,10 @@ Task-Key: ubuntustudio-graphics
 
 * ubuntukylin-desktop # Metapackage for everything here.
 ```
+
+You can view the [current seeds](http://people.canonical.com/~ubuntu-archive/seeds/), and the current output of [germinate](http://people.canonical.com/~ubuntu-archive/germinate-output/).
+
+refefence:
+
+1. https://wiki.ubuntu.com/SeedManagement
+2. https://wiki.ubuntu.com/Germinate
