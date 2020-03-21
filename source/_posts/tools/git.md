@@ -67,7 +67,7 @@ rm -rf .bzr/                                    # Remove the bzr data
 
 `$ java -jar bfg.jar --delete-folders .git --delete-files .git --no-blob-protection my-repo.git`
 
-## git使用代理
+### git使用代理
 
 ```shell
 # 设置代理
@@ -79,3 +79,12 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
+### 将项目一部分分离出来，作为独立项目
+
+```bash
+git subtree split -P dir_name -b branch_name
+mkdir ../branch_name
+cd ../branch_name
+git init
+git pull ../old_project branch_name
+```

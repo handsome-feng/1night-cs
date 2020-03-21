@@ -6,8 +6,7 @@ title: DBus
 
 ### Debugging
 
-examples/dbus/remotecontrolledcar/controller/controller &
-QDBUS_DEBUG=1 examples/dbus/remotecontrolledcar/car/car &
+
 
 
 
@@ -115,4 +114,48 @@ The <policy> element defines a security policy to be applied to a particular set
 In general, it is best to keep system services as small, targeted programs which run in their own process and provide a single bus name. Then, all that is needed is an <allow> rule for the "own" permission to let the process claim the bus name, and a "send_destination" rule to allow traffic from some or all uids to your service.
 
 Rules with one or more of the `send_`* family of attributes are checked in order when a connection attempts to send a message. The last rule that matches the message determines whether it may be sent. The well-known session bus normally allows sending any message. The well-known system bus normally allows sending any signal, selected method calls to the **dbus-daemon**, and exactly one reply to each previously-sent method call (either success or an error). Either of these can be overridden by configuration; on the system bus, services that will receive method calls must install configuration that allows them to do so, usually via rules of the form `<policy context="default"><allow send_destination="…"/><policy>`.
+
+
+
+### Debugging
+
+This is trickier, because D-Bus policy typically prevents anything but signals from being viewable by dbus-monitor. But we can change that.
+
+1. Create a file /etc/dbus-1/system-local.conf, with these contents:
+```
+<!DOCTYPE busconfig PUBLIC
+"-//freedesktop//DTD D-Bus Bus Configuration 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
+<busconfig>
+    <policy user="root">
+        <allow eavesdrop="true"/>
+        <allow eavesdrop="true" send_destination="*"/>
+    </policy>
+</busconfig>
+```
+2. Reboot your machine to pick up the configuration changes. Simply reloading the DBus server configuration is not sufficient. 
+
+3. Now run dbus-monitor as root. You should be able to see all signals, method calls, and method replies.
+      `sudo dbus-monitor --system`
+      
+4. When done debugging, it is wise to remove the policy snippet:
+      `sudo rm /etc/dbus-1/system-local.conf`
+      
+5. Filtering all the noise
+      If there is just too much information on the bus, pass a match rule like so:
+
+      dbus-monitor "type=signal,sender='org.gnome.TypingMonitor',interface='org.gnome.TypingMonitor'"
+      Multiple rules can be specified. If a message matches any of the rules, the message will be printed. Like so:
+
+      dbus-monitor "type=error" "sender=org.freedesktop.SystemToolsBackends"
+
+      dbus-monitor "type=method_call" "type=method_return" "type=error"
+      See the [D-Bus documentation](https://dbus.freedesktop.org/doc/dbus-specification.html) for more information on match rule syntax.
+
+#### For qt application
+
+```
+examples/dbus/remotecontrolledcar/controller/controller &
+QDBUS_DEBUG=1 examples/dbus/remotecontrolledcar/car/car &
+```
 

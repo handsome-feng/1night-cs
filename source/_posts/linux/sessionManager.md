@@ -2,7 +2,7 @@ Session Manager
 
 1. 会话管理器是什么，什么作用
 
-2. KDE/GNOME/Deepin
+2. KDE/GNOME
 
 3. ukui-session-manager优势与劣势
 
@@ -106,6 +106,10 @@ typedef enum {
 
 
 
+### libegg
+
+https://gitlab.gnome.org/GNOME/libegg/raw/master/libegg/smclient/README
+
 ### KDE ksmserver
 
 * sanity_check(he(合理性检验)
@@ -123,8 +127,6 @@ typedef enum {
 * check_library_exists(ICE _IceTransNoListen "" HAVE__ICETRANSNOLISTEN)
 
 * setupShortcuts
-
-
 
 
 

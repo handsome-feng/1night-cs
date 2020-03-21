@@ -77,14 +77,12 @@ https://wiki.ubuntu.com/SponsorshipProcess
 
 https://wiki.ubuntu.com/FreezeExceptionProcess
 
-#### syncRequestProcess
 
-https://wiki.ubuntu.com/SyncRequestProcess
 
 ### 打包工具
 
 SBuild:         https://wiki.ubuntu.com/SimpleSbuil
-DebDiff:        https://wiki.ubuntu.com/UbuntuStudio/DebDiff
+
 
 在线工具
 

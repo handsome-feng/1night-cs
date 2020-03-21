@@ -9,10 +9,22 @@ title: Debug Symbol Pakcages
 1. Create an /etc/apt/sources.list.d/ddebs.list by running the following line at a terminal:
 
    ```shell
+   # for ubuntu
    echo "deb http://ddebs.ubuntu.com $(lsb_release -cs) main restricted universe multiverse
    deb http://ddebs.ubuntu.com $(lsb_release -cs)-updates main restricted universe multiverse
    deb http://ddebs.ubuntu.com $(lsb_release -cs)-proposed main restricted universe multiverse" | \
    sudo tee -a /etc/apt/sources.list.d/ddebs.list
+   ```
+
+   ```
+   # for debian
+   deb http://deb.debian.org/debian-debug/ stable-debug main
+   deb http://deb.debian.org/debian-debug/ proposed-updates-debug main
+   deb http://deb.debian.org/debian-debug/ stretch-backports-debug main
+   deb http://deb.debian.org/debian-debug/ testing-debug main
+   deb http://deb.debian.org/debian-debug/ testing-proposed-updates-debug main
+   deb http://deb.debian.org/debian-debug/ unstable-debug main
+   deb http://deb.debian.org/debian-debug/ experimental-debug main
    ```
 
 2. Import the debug symbol archive signing key from the Ubuntu server:
@@ -29,7 +41,12 @@ title: Debug Symbol Pakcages
    ```
 
 4. Automatic resolution
-
+* 使用debian-goodies获取需要安装的所有dbgsym包
+  ```
+  apt install debian-goodies
+  find-dbgsym-packages [core_path|running_pid|binary_path]
+  ```
+* 或者通过以下脚本(此脚本年久失修，需要更新)
    ```shell
    #!/bin/bash -x
    progname=`basename "$0"`
@@ -123,6 +140,8 @@ title: Debug Symbol Pakcages
    done| sed -e 's/^\(.*\): .*$/\1/' | sort -u | \
    find-debug | if $terse; then sed -e 's/ - .*$//'; else cat; fi |sort -u
    ```
+
+   
 
 5. Set generate core dump:
 

@@ -54,6 +54,8 @@ $ strace -p pid     //附到一个已经在跑的进程上，实时观察
 
 ### valgrind
 
+https://wiki.ubuntu.com/Valgrind
+
 ### Backtrace
 
 Generation

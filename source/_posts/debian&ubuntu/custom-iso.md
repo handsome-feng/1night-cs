@@ -55,6 +55,26 @@ title: 手动定制优麒麟镜像
 
        `fc-cache -v -f`
 
+     * 更新开机动画 (可选，主题包postinst文件里有)
+
+       ```bash
+       update-alternatives \
+           --install /usr/share/plymouth/themes/default.plymouth default.plymouth \
+           /usr/share/plymouth/themes/ubuntukylin-logo/ubuntukylin-logo.plymouth 150
+       update-alternatives \
+           --install /usr/share/plymouth/themes/text.plymouth text.plymouth \
+           /usr/share/plymouth/themes/ubuntukylin-text/ubuntukylin-text.plymouth 150
+       update-initramfs -u
+       ```
+
+     * 更新grub主题 (可选)
+
+       ```bash
+       if [ -e /boot/grub/grub.cfg ]; then
+           update-grub || true
+       fi
+       ```
+
      * 还原定制版本中修改的配置文件及清除缓存，如/etc/resolv.conf文件，/var/cache/apt/archives目录下的deb包，/var/lib/apt/lists目录下的apt更新list文件等
 
        ```shell
@@ -140,11 +160,12 @@ title: 手动定制优麒麟镜像
     xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1 -V Ubuntu-Kylin\ 19.04 -o ubuntukylin-19.04-amd64.iso -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus uk64/
     ```
 
-32位：
+* 如果是32位:
     ```
     xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1 -V Ubuntu-Kylin\ 18.04.2 -o ubuntukylin-18.04.2-enhanced-i386.iso -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -partition_offset 16 -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table uk32/
     ```
 
+#### 其他
 * pressed配置：
 
      https://help.ubuntu.com/lts/installation-guide/s390x/apbs04.html#preseed-l10n
@@ -162,3 +183,7 @@ title: 手动定制优麒麟镜像
 * 解开initrd:
 
   unmkinitramfs initrd
+  
+* 自动化定制ISO工具：
+
+     [Cubic](https://launchpad.net/cubic)

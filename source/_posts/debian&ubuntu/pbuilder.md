@@ -193,3 +193,5 @@ DIST=eoan ARCH=i386 pdebuild
 https://wiki.ubuntu.com/PbuilderHowto
 
 https://wiki.debian.org/PbuilderTricks
+
+https://pbuilder-docs.readthedocs.io/en/latest/index.html
