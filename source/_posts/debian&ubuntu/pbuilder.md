@@ -127,6 +127,8 @@ echo "HOOKDIR=$HOME/pbuilderhooks/"  | sudo tee -a /etc/pbuilderrc
 
 ```
 sudo pbuilder --login --save-after-login --basetgz <path to your base.tgz file>
+# if ARCH=i386 pdebuild failed
+sudo pbuilder --login --bindmounts ukui-window-switch
 ```
 
  

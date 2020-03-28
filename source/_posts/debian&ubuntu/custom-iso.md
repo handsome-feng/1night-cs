@@ -171,8 +171,12 @@ title: 手动定制优麒麟镜像
      https://help.ubuntu.com/lts/installation-guide/s390x/apbs04.html#preseed-l10n
 
      <https://wiki.ubuntu.com/UbiquityAutomation>
-   
+
      <https://help.ubuntu.com/community/InstallCDCustomization>
+
+     https://help.ubuntu.com/community/LiveCDCustomization
+
+     https://help.ubuntu.com/community/LiveCDCustomizationFromScratch
 
 * 修改/etc/sudoers,使得sudo不需要密码：
 

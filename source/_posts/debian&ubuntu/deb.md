@@ -1,7 +1,14 @@
 ---
-title: deb包定制
+title: deb包
 ---
 
+### 从源码构建deb包
+
+dh_make
+
+debuild
+
+### 解包
 ```bash
 # 解包
 dpkg -X foo.deb extract/
