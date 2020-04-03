@@ -11,3 +11,10 @@ origtargz
 dgit --gbp sbuild
 
 dgit --gbp push-source
+
+
+
+```
+cme update dpkg-copyright
+```
+

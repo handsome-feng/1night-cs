@@ -17,4 +17,3 @@ dpkg -e foo.deb extract/DEBIAN
 # 打包
 dpkg-deb -b extract/ result/
 ```
-
