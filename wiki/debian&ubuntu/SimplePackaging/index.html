@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="One night in cs">
 <meta property="og:description" content="https://wiki.debian.org/SimplePackagingTutorial Download the upstream source as tarball.Rename it to _.orig.tar.gz (eg. node-pretty-hrtime_1.0.3.orig.tar.gz). Untar the tarball.Rename the directory to">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-03-28T12:38:48.931Z">
+<meta property="og:updated_time" content="2020-04-03T03:27:33.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="One night in cs">
 <meta name="twitter:description" content="https://wiki.debian.org/SimplePackagingTutorial Download the upstream source as tarball.Rename it to _.orig.tar.gz (eg. node-pretty-hrtime_1.0.3.orig.tar.gz). Untar the tarball.Rename the directory to">
@@ -220,7 +220,7 @@
                             &nbsp;
                             desktop-environment
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/desktop-environment/dbus/">DBus</a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/default-applications/"></a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/lightdm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/notification/"></a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/sessionManager/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/desktop-environment/dbus/">DBus</a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/default-applications/"></a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/lightdm/"></a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/notification/"></a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/sessionManager/"></a></li>  <li class="file"><a href="/1night-cs/wiki/desktop-environment/占用资源分析/"></a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -265,7 +265,7 @@
                             &nbsp;
                             tools
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/lsof/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/irc/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/regex/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/x2x/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xdotool/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xwd/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/lsof/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/irc/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/regex/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/x2x/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xdotool/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xwd/"></a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/1night-cs/wiki/index/"></a></li>  </ul> 
     </div>
@@ -357,7 +357,8 @@
 <p>Changelog file can be edited using the following command </p>
 <p>dch -e</p>
 <p>Update debian/copyright with any missing information.</p>
-<p>cme update dpkg-copyright</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cme update dpkg-copyright</span><br></pre></td></tr></table></figure>
+
 <p>Run debclean or clean before running git commit to ensure files generated by dpkg-buildpackage are not committed.</p>
 <p>File ITP (Intend To Package).</p>
 <p>Clean build with sbuild/pbuild. Make sure that the package builds in a clean minimal chroot.</p>
