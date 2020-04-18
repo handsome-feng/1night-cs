@@ -145,10 +145,28 @@ title: Debug Symbol Pakcages
 
 5. Set generate core dump:
 
-   ```
+   ```bash
    ulimit -c unlimited
-   sudo service apport stop // modify /proc/sys/kernle/core_pattern or sysctl.conf
+   # Ubuntu set /proc/sys/kernel/core_pattern to 'apport /usr/share/apport/apport %p %s %c %p', so stop it first.
+   sudo service apport stop
+   # Set the location of coredump file.
+   sudo sysctl -w kernel.core_pattern=/tmp/core-%e.%p.%h.%t
    ```
+
+   or set these properties permanently:
+
+   ```shell
+   # edit /etc/security/limits.conf
+   *    soft    core    unlimited
+   root soft    core    unlimited
+   # edit /etc/sysctl.conf and make it effective
+   kernle.core_pattern=/tmp/core-%e.%p.%h.%t
+   sysctl -p
+   ```
+
+   
+
+   You can install systemd-coredump to control dump file deeply.
 
 6. gdb ./a.out core
 

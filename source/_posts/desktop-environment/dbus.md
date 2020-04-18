@@ -159,3 +159,14 @@ examples/dbus/remotecontrolledcar/controller/controller &
 QDBUS_DEBUG=1 examples/dbus/remotecontrolledcar/car/car &
 ```
 
+### Dbus command tools
+
+* gdbus
+* dbus-send
+```
+dbus-send --system --type=signal /org/freedesktop/login1 org.freedesktop.login1.PrepareForShutdown boolean:true
+```
+* dbus-monitor
+```
+dbus-monitor --system interface=org.freedesktop.login1
+```

@@ -6,7 +6,7 @@ Session Manager
 
 3. ukui-session-manager优势与劣势
 
-   
+### Multi-Seat on Linux   
 
 传统的 Linux 系统使用 ConsoleKit 跟踪用户登录情况，并决定是否赋予其关机的权限。现在 ConsoleKit 已经被 systemd 的 logind 所替代。
 
@@ -128,5 +128,11 @@ https://gitlab.gnome.org/GNOME/libegg/raw/master/libegg/smclient/README
 
 * setupShortcuts
 
+### inhibit
+* org.freedesktop.login1.Manager.Inhibit
+* org.gnome.SessionManager.Inhibitor
+* Power Manager
 
+systemd-inhibit
 
+Ref: https://www.freedesktop.org/wiki/Software/systemd/inhibit/
