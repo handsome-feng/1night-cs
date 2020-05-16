@@ -96,5 +96,101 @@ int main(){
 
   具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。
 
-## 抽象工厂模式
+```python
+class Mercedes(object):
+    def __repr__(self):
+        return "Mercedes-Bens"
 
+class BMW(object):
+    def __repr__(self):
+        return "BMW"
+
+# before
+mercedes = Mercedes()
+bmw = BMW()
+
+# after
+class SimpleFactory(object):
+    def product_car(name):
+        if name == 'mb':
+            return Mercedes()
+        elif name == 'bmw':
+            return BMW()
+c1 = SimpleFactory.product_car('mb')
+c2 = SimpleFactory.product_car('bmw')
+```
+
+## 工厂方法模式
+工厂方法模式是简单工厂的仅一步深化， 在工厂方法模式中，我们不再提供一个统一的工厂类来创建所有的对象，而是针对不同的对象提供不同的工厂。也就是说每个对象都有一个与之对应的工厂。
+```python
+import abc
+
+class AbstractFactory(object):
+    __metaclass__ = abc.ABMMeta
+
+    @abc.abstractmethod
+    def product_car(self):
+        pass
+
+class MercedesFactory(AbstractFactory):
+    def product_car(self):
+        return Mercedes()
+
+class BMWFactory(AbstractFactory):
+    def product_car(self):
+        return BMW()
+
+# before: 新增一个car，需要修改工厂的代码
+
+# after: 新增一个car，只要增加相应的工厂
+c1 = MercedesFactory().product_car()
+c2 = BMWFactory().product_car()
+    
+```
+## 抽象工厂模式
+抽象工厂模式是工厂方法的进一步深化，在这个模式中的工厂类不单单可以创建一个对象，而
+是可以创建一组对象。
+```python
+import abc
+
+class Mercedes_C63(object):
+    def __repr__(self):
+        return "Mercedes-Benz: C63"
+
+class BMW_M3(object):
+    def __repr__(self):
+        return "BMW: M3"
+
+class Mercedes_G63(object):
+    def __repr__(self):
+        return "Mercedes_Bens: G63"
+
+class BMW_X5(object):
+    def __repr__(self):
+        return "BMW: X5"
+
+class AbstractFactory(object):
+    __metaclass__ = abc.ABCMeta
+
+    @abc.abstractmethod
+    def product_car(self):
+        pass
+
+    @abc.abstractmethod
+    def product_suv(self):
+        pass
+
+class MercedesFactory(AbstractFactory):
+    def product_car(self):
+        return Mercedes_C63()
+
+    def product_suv(self):
+        return Mercedes_G63()
+
+class BMWFactory(AbstractFactory):
+    def product_car(self):
+        return BMW_M3()
+
+    def product_suv(self):
+        return BMW_X5()
+```
