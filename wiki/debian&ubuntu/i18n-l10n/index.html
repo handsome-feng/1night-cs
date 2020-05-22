@@ -9,18 +9,18 @@
         <meta name="keywords" content="i18n/l10n">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Gettext 1msginit -l bo  //根据当前目录下pot文件，生成bo.po  1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo">
+    <meta name="description" content="Gettext 1234gettext -o foo.pot //生成pot文件msginit --input=foo.pot --local=bo  //生成bo.pomsgfmt bo.po -o bo.mo //生成momsgmerge foo_new.pot bo.po -o bo_new.po // 更具新的pot文件，更新po文件  1for po in `ls *.po`; do m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="i18n&#x2F;l10n">
 <meta property="og:url" content="https://handsome-feng.github.io/1night-cs/wiki/debian&ubuntu/i18n-l10n/index.html">
 <meta property="og:site_name" content="One night in cs">
-<meta property="og:description" content="Gettext 1msginit -l bo  //根据当前目录下pot文件，生成bo.po  1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo">
+<meta property="og:description" content="Gettext 1234gettext -o foo.pot //生成pot文件msginit --input=foo.pot --local=bo  //生成bo.pomsgfmt bo.po -o bo.mo //生成momsgmerge foo_new.pot bo.po -o bo_new.po // 更具新的pot文件，更新po文件  1for po in `ls *.po`; do m">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://handsome-feng.github.io/1night-cs/wiki/debian&ubuntu/pics/gettext.svg">
-<meta property="og:updated_time" content="2020-05-16T13:15:36.080Z">
+<meta property="og:updated_time" content="2020-05-22T12:03:32.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="i18n&#x2F;l10n">
-<meta name="twitter:description" content="Gettext 1msginit -l bo  //根据当前目录下pot文件，生成bo.po  1for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done  修改po文件：  在Linux世界里有软件可以直接打开.mo文件以供编辑，这款软件叫——Virtaal  123msgunfmt foo.mo -o foo">
+<meta name="twitter:description" content="Gettext 1234gettext -o foo.pot //生成pot文件msginit --input=foo.pot --local=bo  //生成bo.pomsgfmt bo.po -o bo.mo //生成momsgmerge foo_new.pot bo.po -o bo_new.po // 更具新的pot文件，更新po文件  1for po in `ls *.po`; do m">
 <meta name="twitter:image" content="https://handsome-feng.github.io/1night-cs/wiki/debian&ubuntu/pics/gettext.svg">
     
 
@@ -249,7 +249,7 @@
                             &nbsp;
                             linux
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/linux/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/file_system/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/graphics_system/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/initrd/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kernel/">Kernel</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kvm/">kvm</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/network/">Network</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/sharedlibs/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/snap/">Snap</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/sysrq/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/systemd/">systemd</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/linux/docker/">docker</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/file_system/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/graphics_system/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/initrd/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kernel/">Kernel</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/kvm/">kvm</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/linux_c/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/network/">Network</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/sharedlibs/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/snap/">Snap</a></li>  <li class="file"><a href="/1night-cs/wiki/linux/swap/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/sysrq/"></a></li>  <li class="file"><a href="/1night-cs/wiki/linux/systemd/">systemd</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -258,7 +258,7 @@
                             &nbsp;
                             others
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/ubuntu-2004-vnc-server/">优麒麟20.04远程桌面</a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/others/projects/"></a></li>  <li class="file"><a href="/1night-cs/wiki/others/计算机组成与设计/"></a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -267,7 +267,7 @@
                             &nbsp;
                             tools
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/lsof/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/geekbench/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/irc/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/regex/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/x2x/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xdotool/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xwd/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/1night-cs/wiki/tools/lsof/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/autoconf/">autoconf</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/geekbench/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/git/">Git</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/gpg/">GPG</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/hexchat/">Hexchat</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/irc/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/regex/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/scrcpy/">scrcpy</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/screen/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ssh/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/ubuntu-2004-vnc-server/">优麒麟20.04远程桌面</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/v2ray/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/vim/">vim</a></li>  <li class="file"><a href="/1night-cs/wiki/tools/x2x/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xdotool/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xrdp/"></a></li>  <li class="file"><a href="/1night-cs/wiki/tools/xwd/"></a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/1night-cs/wiki/index/"></a></li>  </ul> 
     </div>
@@ -358,7 +358,7 @@
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/1night-cs/wiki/debian&ubuntu/i18n-l10n/">
-            <time datetime="2020-05-16T13:15:36.080Z" itemprop="datePublished">2020-05-16</time>
+            <time datetime="2020-05-22T12:03:32.768Z" itemprop="datePublished">2020-05-22</time>
         </a>
     </div>
 
@@ -397,7 +397,7 @@
         
         
             <h2 id="Gettext"><a href="#Gettext" class="headerlink" title="Gettext"></a>Gettext</h2><p><img src="../pics/gettext.svg" alt="gettext" title="Typical gettext workflow"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msginit -l bo  //根据当前目录下pot文件，生成bo.po</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gettext -o foo.pot //生成pot文件</span><br><span class="line">msginit --input=foo.pot --local=bo  //生成bo.po</span><br><span class="line">msgfmt bo.po -o bo.mo //生成mo</span><br><span class="line">msgmerge foo_new.pot bo.po -o bo_new.po // 更具新的pot文件，更新po文件</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for po in `ls *.po`; do msgmerge -U $po slideshow-ubuntukylin.pot; done</span><br></pre></td></tr></table></figure>
 
@@ -407,15 +407,17 @@
 </li>
 <li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msgunfmt foo.mo -o foo.po</span><br><span class="line">// Edit foo.po</span><br><span class="line">msgfmt foo.po -o foo.mo</span><br></pre></td></tr></table></figure>
 
-
-
 </li>
 </ol>
-<h3 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h3><p>hello.pro</p>
+<h3 id="qmake"><a href="#qmake" class="headerlink" title="qmake"></a>qmake</h3><p>hello.pro</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TRANSLATIONS = zh_CN.ts \</span><br><span class="line">               bo.ts</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lupdate -pro hello.pro</span><br><span class="line">lrelease zh_CN.ts</span><br></pre></td></tr></table></figure>
 
+<h3 id="meson"><a href="#meson" class="headerlink" title="meson"></a>meson</h3><p>i18n = import(‘i18n’)<br>its_dir = xxxx<br>i18n.merge_file(<br>  input: xxx<br>  output: xxx<br>  po_dir: xxx</p>
+<p>  #data_dir: its_dir<br>  install: xx<br>  install_dir: xxx<br>)</p>
+<h1 id="in-po"><a href="#in-po" class="headerlink" title="in po"></a>in po</h1><p>i18n.gettext(<br>  meson.project_name(),<br>  preset: ‘glib’,</p>
+<p>  #data_dirs: its_dir,<br>)</p>
 
             </div>
         
