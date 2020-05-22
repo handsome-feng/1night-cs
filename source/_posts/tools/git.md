@@ -5,15 +5,26 @@ title: Git
 ### 常用命令
 
 ```shell
+# 新建并且切换到branch-name
 git checkout -b <branch-name>
+
+# 合并branch-name的filename到当前分支
+git checkout branch-name filename
+
 git remote -v
 git remote add origin-gitlab git@salsa.debian.org:handsome_feng-guest/ukui-session-manager.git
 git push origin-gitlab debian:master
+
 git cherry-pick <commit-id>
 git cherry-pick <start-commit-id>..<end-commit-id>
+
 git submodule update --init
+
 git revert <commit-id>
 git reset
+
+# 比较两个分支的某个目录
+git diff master focal-dev debian
 ```
 
 

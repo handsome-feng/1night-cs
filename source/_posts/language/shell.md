@@ -136,4 +136,6 @@ $ eval y='$'$x
 $ echo $y
 10
 ```
-
+### awk
+$ echo 'handsome_feng|shuai' | awk -F '[_|]' '{print $3;}'
+feng
