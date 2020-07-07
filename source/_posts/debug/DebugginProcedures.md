@@ -58,6 +58,8 @@ https://wiki.ubuntu.com/Valgrind
 
 ### Backtrace
 
+https://wiki.ubuntu.com/Backtrace
+
 Generation
 
 1. Please ensure you have packages with debug symbols installed. You can do this by following the instructions at DebuggingProgramCrash.
@@ -134,6 +136,17 @@ Attach the complete output from GDB, contained in gdb-<program>.txt, in your bug
 `$ ps -T`
 `$ top -H -p <pid>`　　//让top输出某个特定进程并检查该进程内运行的线程状况
 `$ htop`
+
+### 查看程序或进程用到的库
+
+```
+$ ldd /path/to/program //可能会直接调用可执行程序来明确其库文件依赖关系，对于不可信的第三方程序来说不安全
+$ objdump -p /path/to/program | grep NEEDED
+$ sudo pldd pid-of-program
+$ sudo pmap pid-of-program
+```
+
+
 
 ### 监控文件
 

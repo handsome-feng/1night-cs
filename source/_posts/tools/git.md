@@ -99,3 +99,7 @@ cd ../branch_name
 git init
 git pull ../old_project branch_name
 ```
+
+
+
+debian.org/devel/website/using_git
