@@ -30,7 +30,7 @@ Symbols files provide a way of tracking the exported symbols of a library, which
 
    
 
-# Updating multiple symbols files
+### Updating multiple symbols files
 
 In source packages that provide multiple binary library packages:
 
@@ -38,10 +38,28 @@ pkgkde-symbolshelper batchpatch -v 1.8 buildlog
 
 You can get the symbols for different archs including those from www.ports.debian.org all at once by running inside the top-level source directory the getbuildlog script as provided by the devscripts package:
 
+```
+cd peony
 getbuildlog peony last
+# 1.8 is the new version of peony, and peony_1.8-1*.build is generated locally by debuild.
+pkgkde-symbolshelper batchpatch -v 1.8 ../peony_1.8-1*.build
+```
 
-pkgkde-symbolshelper batchpatch -v 1.8 foo_1.8-1*.build
+### Handling missing symbols
+In certain cases, some symbols may be marked as MISSING after updating the symbols file of a library to a new version. This means that a function or class or global variable that was previously exported for use by applications is not exported anymore. In general, removing a symbol from a library causes binary incompatibility and in this case the SONAME of the library should be bumped.
 
+However, there are some cases where it is safe to remove a symbol. To ensure that your library stays binary compatible, you should manually check every missing symbol that you see to see if it is safe to be removed or not. The most common cases where it is safe to remove a symbol are:
+
+* The symbol is a function/class/variable that is only used internally in the library and does not exist in any public header.
+* The symbol is a private member of a class.
+* The symbol is a virtual method that is already provided by the parent class.
+
+Translate symbols:
+```
+c++filt _ZN10KAboutData10setVersionERK10QByteArray
+```
+
+After verifying that a symbol is safe to be removed, you can just remove the respective MISSING line from the symbols file. If at least one symbol is not safe to be removed, then you should cleanup all the MISSING lines from the symbols file and bump the SONAME of the library.
 
 
 reference: https://qt-kde-team.pages.debian.net/symbolfiles.html
